@@ -7,6 +7,7 @@ COPY apps/api apps/api
 COPY apps/worker apps/worker
 COPY content/dev-fake content/dev-fake
 COPY content/owner-supplied content/owner-supplied
+COPY content/corpus content/corpus
 COPY scripts scripts
 USER 10001
 CMD ["uvicorn", "civis.main:create_app", "--factory", "--host", "0.0.0.0", "--port", "8000", "--no-access-log", "--no-proxy-headers"]
