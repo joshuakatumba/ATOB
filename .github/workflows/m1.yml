@@ -1,0 +1,46 @@
+name: Civis milestone checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  foundations:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4.2.2
+      - uses: actions/setup-python@v5.6.0
+        with:
+          python-version: '3.12.11'
+      - run: python -m venv .venv
+      - run: .venv/bin/pip install -r requirements.lock
+      - run: python scripts/dev_env.py --test-fixtures
+      - run: docker compose up -d --wait postgres auth-db auth redis storage mail
+      - run: docker compose exec -T postgres createdb -U civis civis_test
+      - run: python scripts/run.py .venv/bin/python scripts/bootstrap_storage.py
+        env:
+          PYTHONPATH: apps/api
+      - run: sh scripts/check_m1.sh
+      - uses: actions/setup-node@v4.4.0
+        with:
+          node-version: '22.16.0'
+          cache: npm
+          cache-dependency-path: apps/web/package-lock.json
+      - run: npm ci
+        working-directory: apps/web
+      - run: npm run build
+        working-directory: apps/web
+      - run: npm install --prefix /tmp/civis-qa --no-package-lock playwright@1.65.0
+      - run: /tmp/civis-qa/node_modules/.bin/playwright install chromium
+      - run: |
+          python scripts/run.py .venv/bin/alembic -c apps/api/alembic.ini upgrade head
+          python scripts/run.py .venv/bin/python scripts/seed.py
+          python scripts/run.py .venv/bin/python scripts/import_templates.py
+          python scripts/run.py .venv/bin/uvicorn civis.main:create_app --factory --host 127.0.0.1 --port 58000 --no-access-log > /tmp/civis-api.log 2>&1 &
+      - run: npm run dev -- --host 127.0.0.1 --port 53000 > /tmp/civis-web.log 2>&1 &
+        working-directory: apps/web
+      - run: python scripts/wait_http.py http://localhost:58000/v1/ready http://localhost:53000
+      - run: node scripts/smoke_core.mjs && node scripts/smoke_research_failure.mjs
+        env:
+          CIVIS_PLAYWRIGHT_MODULE: /tmp/civis-qa/node_modules/playwright/index.mjs
+      - if: always()
+        run: docker compose down

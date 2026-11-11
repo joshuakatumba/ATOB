@@ -1,0 +1,26 @@
+{
+  "source": "Laws.Africa Knowledge Bases v1",
+  "country": "ug",
+  "knowledge_bases": [
+    "legislation-ug",
+    "judgments-ug"
+  ],
+  "access_method": "authenticated hosted retrieval; no corpus replication",
+  "api_base_url": "https://api.laws.africa/ai/v1",
+  "documentation": "https://developers.laws.africa/knowledge-bases/quick-start",
+  "licence": "Laws.Africa commercial/API subscription terms; retrieved passages used solely for grounded answer verification with direct ULII/Laws.Africa citation links",
+  "permitted_use": "Live grounded legal research and citation verification for Republic of Uganda statutes and judicial decisions",
+  "owner_approval": "Hosted Uganda retrieval approved by owner on 2026-11-09",
+  "coverage": {
+    "legislation": "Acts of Parliament of Uganda, Revised Edition statutes, and principal statutory instruments in legislation-ug",
+    "courts": [
+      "Supreme Court of Uganda (UGSC)",
+      "Court of Appeal / Constitutional Court of Uganda (UGCA / UGCC)",
+      "High Court of Uganda — Commercial, Civil, Land, Family, Anti-Corruption, and Criminal Divisions",
+      "Industrial Court of Uganda (UGIC)"
+    ],
+    "expression_date_handling": "Each retrieved work includes frbr_uri and expression_date; GroundedProvider surfaces expression_date in source metadata so answers state the law as of the cited expression date without guessing unindexed amendments"
+  },
+  "corrections_and_takedowns": "Zero local passage caching: Civis stores only citation metadata (title, citation, canonical URL) on verified messages and never caches statutory or judgment text in Postgres or Redis, so upstream Laws.Africa/ULII corrections, repeals, or removals take effect immediately on the next query",
+  "stores_document_text": false
+}

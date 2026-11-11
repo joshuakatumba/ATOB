@@ -1,0 +1,99 @@
+# Local development only. Production uses managed Postgres, never this container.
+name: civis-dev
+services:
+  postgres:
+    image: pgvector/pgvector:0.8.0-pg17
+    environment:
+      POSTGRES_USER: civis
+      POSTGRES_DB: civis
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?run scripts/dev_env.py}
+    ports: ["127.0.0.1:55432:5432"]
+    volumes: ["postgres:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U civis -d civis"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+  auth-db:
+    image: postgres:17.5
+    environment:
+      POSTGRES_USER: auth
+      POSTGRES_DB: auth
+      POSTGRES_PASSWORD: ${AUTH_DB_PASSWORD:?run scripts/dev_env.py}
+    volumes: ["auth-db:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U auth -d auth"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+  auth:
+    image: supertokens/supertokens-postgresql:10.1.0
+    environment:
+      POSTGRESQL_CONNECTION_URI: ${AUTH_DATABASE_URL:?run scripts/dev_env.py}
+      API_KEYS: ${SUPERTOKENS_API_KEY:?run scripts/dev_env.py}
+    ports: ["127.0.0.1:53567:3567"]
+    depends_on:
+      auth-db: {condition: service_healthy}
+  redis:
+    image: redis:7.4.4
+    command: ["redis-server", "--appendonly", "yes"]
+    ports: ["127.0.0.1:56379:6379"]
+    volumes: ["redis:/data"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+  storage:
+    build: {context: ., dockerfile: infra/minio.Dockerfile}
+    command: ["server", "/data"]
+    environment:
+      MINIO_ROOT_USER: ${S3_ACCESS_KEY:?run scripts/dev_env.py}
+      MINIO_ROOT_PASSWORD: ${S3_SECRET_KEY:?run scripts/dev_env.py}
+    ports: ["127.0.0.1:59000:9000"]
+    volumes: ["storage:/data"]
+  mail:
+    image: axllent/mailpit:v1.26.2
+    ports: ["127.0.0.1:51025:1025", "127.0.0.1:58025:8025"]
+  scanner:
+    image: clamav/clamav:1.4.2
+    profiles: ["uploads"]
+    volumes: ["clamav:/var/lib/clamav"]
+  api:
+    build: {context: ., dockerfile: infra/api.Dockerfile}
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql+asyncpg://civis:${POSTGRES_PASSWORD}@postgres:5432/civis
+      REDIS_URL: redis://redis:6379/0
+      SUPERTOKENS_URI: http://auth:3567
+      S3_ENDPOINT: http://storage:9000
+      S3_PUBLIC_ENDPOINT: ${S3_PUBLIC_ENDPOINT:-http://localhost:59000}
+      SMTP_HOST: mail
+      SMTP_PORT: "1025"
+    ports: ["127.0.0.1:58000:8000"]
+    depends_on:
+      postgres: {condition: service_healthy}
+      redis: {condition: service_healthy}
+      auth: {condition: service_started}
+      storage: {condition: service_started}
+  worker:
+    build: {context: ., dockerfile: infra/api.Dockerfile}
+    env_file: .env
+    environment:
+      REDIS_URL: redis://redis:6379/0
+    command: ["arq", "civis_worker.WorkerSettings"]
+    depends_on:
+      redis: {condition: service_healthy}
+  web:
+    build:
+      context: .
+      dockerfile: infra/web.Dockerfile
+    ports: ["127.0.0.1:53000:80"]
+    depends_on:
+      api: {condition: service_started}
+volumes:
+  postgres:
+  auth-db:
+  redis:
+  storage:
+  clamav:

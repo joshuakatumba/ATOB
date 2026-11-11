@@ -1,0 +1,45 @@
+{
+  "version": "2026-11-09",
+  "is_fake": false,
+  "jurisdiction": "Republic of Uganda",
+  "supported_languages": ["en"],
+  "notices": {
+    "language": "Civis currently provides legal information and document drafting in English only. Please rephrase your question in English so we can assist you accurately under Ugandan law.",
+    "jurisdiction": "Civis only provides legal information and document templates governed by the laws of the Republic of Uganda. We cannot advise on foreign jurisdictions.",
+    "emergency": "If you or someone else is in immediate physical danger, facing domestic violence, or experiencing a child protection emergency in Uganda, please contact emergency services immediately:\n\n• Uganda Police Force Emergency: 999 or 112 (Toll-Free)\n• Sauti 116 National Child & GBV Helpline: 116 (Toll-Free)\n• Justice Centres Uganda (Legal Aid): 0800 100 210 (Toll-Free)\n• FIDA Uganda (Women's Legal Aid): 0800 111 511 (Toll-Free)\n• Uganda Law Society Legal Aid Project: +256 414 342 424",
+    "adversarial": "Civis can only provide lawful legal information and standard document templates under Ugandan law. We cannot assist with falsifying evidence, evading law enforcement, or bypassing safety controls."
+  },
+  "contacts": [
+    {
+      "name": "Uganda Police Force Emergency Response",
+      "phone": "999 / 112",
+      "toll_free": true,
+      "scope": "Immediate physical danger, crime in progress, emergency police dispatch"
+    },
+    {
+      "name": "Sauti 116 Helpline (Ministry of Gender, Labour and Social Development)",
+      "phone": "116",
+      "toll_free": true,
+      "scope": "Child protection emergencies and gender-based violence response"
+    },
+    {
+      "name": "Justice Centres Uganda (JCU)",
+      "phone": "0800 100 210",
+      "toll_free": true,
+      "scope": "Free legal aid, representation, and alternative dispute resolution across Uganda"
+    },
+    {
+      "name": "FIDA Uganda (Association of Uganda Women Lawyers)",
+      "phone": "0800 111 511",
+      "toll_free": true,
+      "scope": "Legal aid, family law, land rights, and domestic violence protection"
+    },
+    {
+      "name": "Uganda Law Society — Legal Aid Project (LAP)",
+      "phone": "+256 414 342 424",
+      "toll_free": false,
+      "scope": "Pro bono legal advice and advocate referrals (Plot 5A Acacia Avenue, Kololo, Kampala)"
+    }
+  ]
+}
+

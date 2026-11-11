@@ -1,0 +1,5143 @@
+{
+  "approval": "owner-approved-for-testing-2026-11-09",
+  "source": "Civis.jsx",
+  "source_sha256": "143ee8a52ec747247f59a3201f67d35c7178e8ea9e5f8344140847099aab3a67",
+  "templates": [
+    {
+      "slug": "employment-contract-agreement",
+      "title": "Employment Contract Agreement",
+      "category": "Employment & workplace",
+      "kind": "agreement",
+      "fields": [
+        {
+          "key": "a",
+          "label": "First party name",
+          "example": "Bright Builders Ltd",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "First party address",
+          "example": "Plot 50, Ntinda Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Second party name",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "ba",
+          "label": "Second party address",
+          "example": "Plot 27, Jinja Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Effective date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "d2",
+          "label": "End date",
+          "example": "2027-03-01",
+          "max_length": 500
+        },
+        {
+          "key": "amt",
+          "label": "Amount",
+          "example": "UGX 5,000,000",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Key terms",
+          "example": "The work will be completed within 90 days.",
+          "max_length": 4000
+        },
+        {
+          "key": "law",
+          "label": "Governing law",
+          "example": "Laws of the Republic of Uganda",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "PARTIES",
+          "This {T} is made on {d1} between {a}, of {aa} (the “First Party”), and {b}, of {ba} (the “Second Party”)."
+        ],
+        [
+          "TERM",
+          "This agreement starts on {d1} and ends on {d2} unless it is ended earlier under its terms."
+        ],
+        [
+          "KEY TERMS",
+          "{det}"
+        ],
+        [
+          "PAYMENT",
+          "The agreed amount is {amt}. Payment is due as the parties agree in writing."
+        ],
+        [
+          "TERMINATION",
+          "Either party may end this agreement by written notice if the other party breaks it and does not fix the problem within 14 days."
+        ],
+        [
+          "GOVERNING LAW",
+          "This agreement is governed by the {law}."
+        ],
+        [
+          "SIGNATURES",
+          "Signed by {a} and {b} on {d1}."
+        ]
+      ]
+    },
+    {
+      "slug": "disciplinary-form",
+      "title": "Disciplinary Form",
+      "category": "Employment & workplace",
+      "kind": "letter",
+      "fields": [
+        {
+          "key": "a",
+          "label": "Sender name",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "Sender address",
+          "example": "Plot 27, Jinja Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Recipient name",
+          "example": "Kevin Odoch",
+          "max_length": 500
+        },
+        {
+          "key": "ba",
+          "label": "Recipient address",
+          "example": "Plot 15, Kira Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "sub",
+          "label": "Subject",
+          "example": "Subject of this document",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Details",
+          "example": "Explain the matter clearly and what you want to happen.",
+          "max_length": 4000
+        },
+        {
+          "key": "d2",
+          "label": "Respond by",
+          "example": "2026-12-15",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "",
+          "From: {a}, {aa}"
+        ],
+        [
+          "",
+          "To: {b}, {ba}"
+        ],
+        [
+          "",
+          "Date: {d1}"
+        ],
+        [
+          "SUBJECT",
+          "{sub}"
+        ],
+        [
+          "",
+          "Dear {b},"
+        ],
+        [
+          "",
+          "{det}"
+        ],
+        [
+          "",
+          "Please respond or act by {d2}."
+        ],
+        [
+          "",
+          "Yours sincerely, {a}"
+        ]
+      ]
+    },
+    {
+      "slug": "termination-letter",
+      "title": "Termination Letter",
+      "category": "Employment & workplace",
+      "kind": "letter",
+      "fields": [
+        {
+          "key": "a",
+          "label": "Sender name",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "Sender address",
+          "example": "Plot 27, Jinja Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Recipient name",
+          "example": "Kevin Odoch",
+          "max_length": 500
+        },
+        {
+          "key": "ba",
+          "label": "Recipient address",
+          "example": "Plot 15, Kira Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "sub",
+          "label": "Subject",
+          "example": "Subject of this document",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Details",
+          "example": "Explain the matter clearly and what you want to happen.",
+          "max_length": 4000
+        },
+        {
+          "key": "d2",
+          "label": "Respond by",
+          "example": "2026-12-15",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "",
+          "From: {a}, {aa}"
+        ],
+        [
+          "",
+          "To: {b}, {ba}"
+        ],
+        [
+          "",
+          "Date: {d1}"
+        ],
+        [
+          "SUBJECT",
+          "{sub}"
+        ],
+        [
+          "",
+          "Dear {b},"
+        ],
+        [
+          "",
+          "{det}"
+        ],
+        [
+          "",
+          "Please respond or act by {d2}."
+        ],
+        [
+          "",
+          "Yours sincerely, {a}"
+        ]
+      ]
+    },
+    {
+      "slug": "offer-letter",
+      "title": "Offer Letter",
+      "category": "Employment & workplace",
+      "kind": "letter",
+      "fields": [
+        {
+          "key": "a",
+          "label": "Sender name",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "Sender address",
+          "example": "Plot 27, Jinja Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Recipient name",
+          "example": "Kevin Odoch",
+          "max_length": 500
+        },
+        {
+          "key": "ba",
+          "label": "Recipient address",
+          "example": "Plot 15, Kira Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "sub",
+          "label": "Subject",
+          "example": "Subject of this document",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Details",
+          "example": "Explain the matter clearly and what you want to happen.",
+          "max_length": 4000
+        },
+        {
+          "key": "d2",
+          "label": "Respond by",
+          "example": "2026-12-15",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "",
+          "From: {a}, {aa}"
+        ],
+        [
+          "",
+          "To: {b}, {ba}"
+        ],
+        [
+          "",
+          "Date: {d1}"
+        ],
+        [
+          "SUBJECT",
+          "{sub}"
+        ],
+        [
+          "",
+          "Dear {b},"
+        ],
+        [
+          "",
+          "{det}"
+        ],
+        [
+          "",
+          "Please respond or act by {d2}."
+        ],
+        [
+          "",
+          "Yours sincerely, {a}"
+        ]
+      ]
+    },
+    {
+      "slug": "non-compete-agreement",
+      "title": "Non-Compete Agreement",
+      "category": "Employment & workplace",
+      "kind": "agreement",
+      "fields": [
+        {
+          "key": "a",
+          "label": "First party name",
+          "example": "Bright Builders Ltd",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "First party address",
+          "example": "Plot 50, Ntinda Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Second party name",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "ba",
+          "label": "Second party address",
+          "example": "Plot 27, Jinja Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Effective date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "d2",
+          "label": "End date",
+          "example": "2027-03-01",
+          "max_length": 500
+        },
+        {
+          "key": "amt",
+          "label": "Amount",
+          "example": "UGX 5,000,000",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Key terms",
+          "example": "The work will be completed within 90 days.",
+          "max_length": 4000
+        },
+        {
+          "key": "law",
+          "label": "Governing law",
+          "example": "Laws of the Republic of Uganda",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "PARTIES",
+          "This {T} is made on {d1} between {a}, of {aa} (the “First Party”), and {b}, of {ba} (the “Second Party”)."
+        ],
+        [
+          "TERM",
+          "This agreement starts on {d1} and ends on {d2} unless it is ended earlier under its terms."
+        ],
+        [
+          "KEY TERMS",
+          "{det}"
+        ],
+        [
+          "PAYMENT",
+          "The agreed amount is {amt}. Payment is due as the parties agree in writing."
+        ],
+        [
+          "TERMINATION",
+          "Either party may end this agreement by written notice if the other party breaks it and does not fix the problem within 14 days."
+        ],
+        [
+          "GOVERNING LAW",
+          "This agreement is governed by the {law}."
+        ],
+        [
+          "SIGNATURES",
+          "Signed by {a} and {b} on {d1}."
+        ]
+      ]
+    },
+    {
+      "slug": "leave-request-form",
+      "title": "Leave Request Form",
+      "category": "Employment & workplace",
+      "kind": "letter",
+      "fields": [
+        {
+          "key": "a",
+          "label": "Sender name",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "Sender address",
+          "example": "Plot 27, Jinja Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Recipient name",
+          "example": "Kevin Odoch",
+          "max_length": 500
+        },
+        {
+          "key": "ba",
+          "label": "Recipient address",
+          "example": "Plot 15, Kira Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "sub",
+          "label": "Subject",
+          "example": "Subject of this document",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Details",
+          "example": "Explain the matter clearly and what you want to happen.",
+          "max_length": 4000
+        },
+        {
+          "key": "d2",
+          "label": "Respond by",
+          "example": "2026-12-15",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "",
+          "From: {a}, {aa}"
+        ],
+        [
+          "",
+          "To: {b}, {ba}"
+        ],
+        [
+          "",
+          "Date: {d1}"
+        ],
+        [
+          "SUBJECT",
+          "{sub}"
+        ],
+        [
+          "",
+          "Dear {b},"
+        ],
+        [
+          "",
+          "{det}"
+        ],
+        [
+          "",
+          "Please respond or act by {d2}."
+        ],
+        [
+          "",
+          "Yours sincerely, {a}"
+        ]
+      ]
+    },
+    {
+      "slug": "internship-agreement",
+      "title": "Internship Agreement",
+      "category": "Employment & workplace",
+      "kind": "agreement",
+      "fields": [
+        {
+          "key": "a",
+          "label": "First party name",
+          "example": "Bright Builders Ltd",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "First party address",
+          "example": "Plot 50, Ntinda Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Second party name",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "ba",
+          "label": "Second party address",
+          "example": "Plot 27, Jinja Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Effective date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "d2",
+          "label": "End date",
+          "example": "2027-03-01",
+          "max_length": 500
+        },
+        {
+          "key": "amt",
+          "label": "Amount",
+          "example": "UGX 5,000,000",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Key terms",
+          "example": "The work will be completed within 90 days.",
+          "max_length": 4000
+        },
+        {
+          "key": "law",
+          "label": "Governing law",
+          "example": "Laws of the Republic of Uganda",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "PARTIES",
+          "This {T} is made on {d1} between {a}, of {aa} (the “First Party”), and {b}, of {ba} (the “Second Party”)."
+        ],
+        [
+          "TERM",
+          "This agreement starts on {d1} and ends on {d2} unless it is ended earlier under its terms."
+        ],
+        [
+          "KEY TERMS",
+          "{det}"
+        ],
+        [
+          "PAYMENT",
+          "The agreed amount is {amt}. Payment is due as the parties agree in writing."
+        ],
+        [
+          "TERMINATION",
+          "Either party may end this agreement by written notice if the other party breaks it and does not fix the problem within 14 days."
+        ],
+        [
+          "GOVERNING LAW",
+          "This agreement is governed by the {law}."
+        ],
+        [
+          "SIGNATURES",
+          "Signed by {a} and {b} on {d1}."
+        ]
+      ]
+    },
+    {
+      "slug": "probation-letter",
+      "title": "Probation Letter",
+      "category": "Employment & workplace",
+      "kind": "letter",
+      "fields": [
+        {
+          "key": "a",
+          "label": "Sender name",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "Sender address",
+          "example": "Plot 27, Jinja Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Recipient name",
+          "example": "Kevin Odoch",
+          "max_length": 500
+        },
+        {
+          "key": "ba",
+          "label": "Recipient address",
+          "example": "Plot 15, Kira Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "sub",
+          "label": "Subject",
+          "example": "Subject of this document",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Details",
+          "example": "Explain the matter clearly and what you want to happen.",
+          "max_length": 4000
+        },
+        {
+          "key": "d2",
+          "label": "Respond by",
+          "example": "2026-12-15",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "",
+          "From: {a}, {aa}"
+        ],
+        [
+          "",
+          "To: {b}, {ba}"
+        ],
+        [
+          "",
+          "Date: {d1}"
+        ],
+        [
+          "SUBJECT",
+          "{sub}"
+        ],
+        [
+          "",
+          "Dear {b},"
+        ],
+        [
+          "",
+          "{det}"
+        ],
+        [
+          "",
+          "Please respond or act by {d2}."
+        ],
+        [
+          "",
+          "Yours sincerely, {a}"
+        ]
+      ]
+    },
+    {
+      "slug": "redundancy-notice",
+      "title": "Redundancy Notice",
+      "category": "Employment & workplace",
+      "kind": "letter",
+      "fields": [
+        {
+          "key": "a",
+          "label": "Sender name",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "Sender address",
+          "example": "Plot 27, Jinja Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Recipient name",
+          "example": "Kevin Odoch",
+          "max_length": 500
+        },
+        {
+          "key": "ba",
+          "label": "Recipient address",
+          "example": "Plot 15, Kira Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "sub",
+          "label": "Subject",
+          "example": "Subject of this document",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Details",
+          "example": "Explain the matter clearly and what you want to happen.",
+          "max_length": 4000
+        },
+        {
+          "key": "d2",
+          "label": "Respond by",
+          "example": "2026-12-15",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "",
+          "From: {a}, {aa}"
+        ],
+        [
+          "",
+          "To: {b}, {ba}"
+        ],
+        [
+          "",
+          "Date: {d1}"
+        ],
+        [
+          "SUBJECT",
+          "{sub}"
+        ],
+        [
+          "",
+          "Dear {b},"
+        ],
+        [
+          "",
+          "{det}"
+        ],
+        [
+          "",
+          "Please respond or act by {d2}."
+        ],
+        [
+          "",
+          "Yours sincerely, {a}"
+        ]
+      ]
+    },
+    {
+      "slug": "employee-handbook",
+      "title": "Employee Handbook",
+      "category": "Employment & workplace",
+      "kind": "letter",
+      "fields": [
+        {
+          "key": "a",
+          "label": "Sender name",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "Sender address",
+          "example": "Plot 27, Jinja Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Recipient name",
+          "example": "Kevin Odoch",
+          "max_length": 500
+        },
+        {
+          "key": "ba",
+          "label": "Recipient address",
+          "example": "Plot 15, Kira Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "sub",
+          "label": "Subject",
+          "example": "Subject of this document",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Details",
+          "example": "Explain the matter clearly and what you want to happen.",
+          "max_length": 4000
+        },
+        {
+          "key": "d2",
+          "label": "Respond by",
+          "example": "2026-12-15",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "",
+          "From: {a}, {aa}"
+        ],
+        [
+          "",
+          "To: {b}, {ba}"
+        ],
+        [
+          "",
+          "Date: {d1}"
+        ],
+        [
+          "SUBJECT",
+          "{sub}"
+        ],
+        [
+          "",
+          "Dear {b},"
+        ],
+        [
+          "",
+          "{det}"
+        ],
+        [
+          "",
+          "Please respond or act by {d2}."
+        ],
+        [
+          "",
+          "Yours sincerely, {a}"
+        ]
+      ]
+    },
+    {
+      "slug": "resignation-letter",
+      "title": "Resignation Letter",
+      "category": "Employment & workplace",
+      "kind": "letter",
+      "fields": [
+        {
+          "key": "a",
+          "label": "Sender name",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "Sender address",
+          "example": "Plot 27, Jinja Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Recipient name",
+          "example": "Kevin Odoch",
+          "max_length": 500
+        },
+        {
+          "key": "ba",
+          "label": "Recipient address",
+          "example": "Plot 15, Kira Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "sub",
+          "label": "Subject",
+          "example": "Subject of this document",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Details",
+          "example": "Explain the matter clearly and what you want to happen.",
+          "max_length": 4000
+        },
+        {
+          "key": "d2",
+          "label": "Respond by",
+          "example": "2026-12-15",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "",
+          "From: {a}, {aa}"
+        ],
+        [
+          "",
+          "To: {b}, {ba}"
+        ],
+        [
+          "",
+          "Date: {d1}"
+        ],
+        [
+          "SUBJECT",
+          "{sub}"
+        ],
+        [
+          "",
+          "Dear {b},"
+        ],
+        [
+          "",
+          "{det}"
+        ],
+        [
+          "",
+          "Please respond or act by {d2}."
+        ],
+        [
+          "",
+          "Yours sincerely, {a}"
+        ]
+      ]
+    },
+    {
+      "slug": "lease-agreement",
+      "title": "Lease Agreement",
+      "category": "Property & tenancy",
+      "kind": "agreement",
+      "fields": [
+        {
+          "key": "a",
+          "label": "First party name",
+          "example": "Bright Builders Ltd",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "First party address",
+          "example": "Plot 50, Ntinda Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Second party name",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "ba",
+          "label": "Second party address",
+          "example": "Plot 27, Jinja Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Effective date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "d2",
+          "label": "End date",
+          "example": "2027-03-01",
+          "max_length": 500
+        },
+        {
+          "key": "amt",
+          "label": "Amount",
+          "example": "UGX 5,000,000",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Key terms",
+          "example": "The work will be completed within 90 days.",
+          "max_length": 4000
+        },
+        {
+          "key": "law",
+          "label": "Governing law",
+          "example": "Laws of the Republic of Uganda",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "PARTIES",
+          "This {T} is made on {d1} between {a}, of {aa} (the “First Party”), and {b}, of {ba} (the “Second Party”)."
+        ],
+        [
+          "TERM",
+          "This agreement starts on {d1} and ends on {d2} unless it is ended earlier under its terms."
+        ],
+        [
+          "KEY TERMS",
+          "{det}"
+        ],
+        [
+          "PAYMENT",
+          "The agreed amount is {amt}. Payment is due as the parties agree in writing."
+        ],
+        [
+          "TERMINATION",
+          "Either party may end this agreement by written notice if the other party breaks it and does not fix the problem within 14 days."
+        ],
+        [
+          "GOVERNING LAW",
+          "This agreement is governed by the {law}."
+        ],
+        [
+          "SIGNATURES",
+          "Signed by {a} and {b} on {d1}."
+        ]
+      ]
+    },
+    {
+      "slug": "real-estate-property-power-of-attorney",
+      "title": "Real Estate Property Power of Attorney",
+      "category": "Property & tenancy",
+      "kind": "declaration",
+      "fields": [
+        {
+          "key": "a",
+          "label": "Full name",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "Address",
+          "example": "Plot 27, Jinja Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Other person (agent, beneficiary or witness)",
+          "example": "Kevin Odoch",
+          "max_length": 500
+        },
+        {
+          "key": "ba",
+          "label": "Other person’s address",
+          "example": "Plot 15, Kira Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Statement or instructions",
+          "example": "State the facts or instructions you want recorded.",
+          "max_length": 4000
+        },
+        {
+          "key": "law",
+          "label": "Governing law",
+          "example": "Laws of the Republic of Uganda",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "DECLARATION",
+          "I, {a}, of {aa}, make this {T} on {d1}."
+        ],
+        [
+          "OTHER PERSON",
+          "This document names {b}, of {ba}."
+        ],
+        [
+          "DETAILS",
+          "{det}"
+        ],
+        [
+          "GOVERNING LAW",
+          "This document is governed by the {law}."
+        ],
+        [
+          "SIGNATURE",
+          "Signed by {a} on {d1} in the presence of {b}."
+        ]
+      ]
+    },
+    {
+      "slug": "notice-to-vacate",
+      "title": "Notice to Vacate",
+      "category": "Property & tenancy",
+      "kind": "letter",
+      "fields": [
+        {
+          "key": "a",
+          "label": "Sender name",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "Sender address",
+          "example": "Plot 27, Jinja Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Recipient name",
+          "example": "Kevin Odoch",
+          "max_length": 500
+        },
+        {
+          "key": "ba",
+          "label": "Recipient address",
+          "example": "Plot 15, Kira Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "sub",
+          "label": "Subject",
+          "example": "Subject of this document",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Details",
+          "example": "Explain the matter clearly and what you want to happen.",
+          "max_length": 4000
+        },
+        {
+          "key": "d2",
+          "label": "Respond by",
+          "example": "2026-12-15",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "",
+          "From: {a}, {aa}"
+        ],
+        [
+          "",
+          "To: {b}, {ba}"
+        ],
+        [
+          "",
+          "Date: {d1}"
+        ],
+        [
+          "SUBJECT",
+          "{sub}"
+        ],
+        [
+          "",
+          "Dear {b},"
+        ],
+        [
+          "",
+          "{det}"
+        ],
+        [
+          "",
+          "Please respond or act by {d2}."
+        ],
+        [
+          "",
+          "Yours sincerely, {a}"
+        ]
+      ]
+    },
+    {
+      "slug": "rent-receipt",
+      "title": "Rent Receipt",
+      "category": "Property & tenancy",
+      "kind": "finance",
+      "fields": [
+        {
+          "key": "a",
+          "label": "Payee name",
+          "example": "Bright Builders Ltd",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Payer name",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "amt",
+          "label": "Amount",
+          "example": "UGX 5,000,000",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Description",
+          "example": "Payment for services provided",
+          "max_length": 4000
+        },
+        {
+          "key": "pm",
+          "label": "Payment method",
+          "example": "Mobile money",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "DATE",
+          "{d1}"
+        ],
+        [
+          "FROM",
+          "{b}"
+        ],
+        [
+          "TO",
+          "{a}"
+        ],
+        [
+          "AMOUNT",
+          "{amt}"
+        ],
+        [
+          "FOR",
+          "{det}"
+        ],
+        [
+          "PAYMENT METHOD",
+          "{pm}"
+        ]
+      ]
+    },
+    {
+      "slug": "property-sale-agreement",
+      "title": "Property Sale Agreement",
+      "category": "Property & tenancy",
+      "kind": "agreement",
+      "fields": [
+        {
+          "key": "a",
+          "label": "First party name",
+          "example": "Bright Builders Ltd",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "First party address",
+          "example": "Plot 50, Ntinda Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Second party name",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "ba",
+          "label": "Second party address",
+          "example": "Plot 27, Jinja Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Effective date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "d2",
+          "label": "End date",
+          "example": "2027-03-01",
+          "max_length": 500
+        },
+        {
+          "key": "amt",
+          "label": "Amount",
+          "example": "UGX 5,000,000",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Key terms",
+          "example": "The work will be completed within 90 days.",
+          "max_length": 4000
+        },
+        {
+          "key": "law",
+          "label": "Governing law",
+          "example": "Laws of the Republic of Uganda",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "PARTIES",
+          "This {T} is made on {d1} between {a}, of {aa} (the “First Party”), and {b}, of {ba} (the “Second Party”)."
+        ],
+        [
+          "TERM",
+          "This agreement starts on {d1} and ends on {d2} unless it is ended earlier under its terms."
+        ],
+        [
+          "KEY TERMS",
+          "{det}"
+        ],
+        [
+          "PAYMENT",
+          "The agreed amount is {amt}. Payment is due as the parties agree in writing."
+        ],
+        [
+          "TERMINATION",
+          "Either party may end this agreement by written notice if the other party breaks it and does not fix the problem within 14 days."
+        ],
+        [
+          "GOVERNING LAW",
+          "This agreement is governed by the {law}."
+        ],
+        [
+          "SIGNATURES",
+          "Signed by {a} and {b} on {d1}."
+        ]
+      ]
+    },
+    {
+      "slug": "business-sale-agreement",
+      "title": "Business Sale Agreement",
+      "category": "Sale, supply & commercial",
+      "kind": "agreement",
+      "fields": [
+        {
+          "key": "a",
+          "label": "First party name",
+          "example": "Bright Builders Ltd",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "First party address",
+          "example": "Plot 50, Ntinda Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Second party name",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "ba",
+          "label": "Second party address",
+          "example": "Plot 27, Jinja Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Effective date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "d2",
+          "label": "End date",
+          "example": "2027-03-01",
+          "max_length": 500
+        },
+        {
+          "key": "amt",
+          "label": "Amount",
+          "example": "UGX 5,000,000",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Key terms",
+          "example": "The work will be completed within 90 days.",
+          "max_length": 4000
+        },
+        {
+          "key": "law",
+          "label": "Governing law",
+          "example": "Laws of the Republic of Uganda",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "PARTIES",
+          "This {T} is made on {d1} between {a}, of {aa} (the “First Party”), and {b}, of {ba} (the “Second Party”)."
+        ],
+        [
+          "TERM",
+          "This agreement starts on {d1} and ends on {d2} unless it is ended earlier under its terms."
+        ],
+        [
+          "KEY TERMS",
+          "{det}"
+        ],
+        [
+          "PAYMENT",
+          "The agreed amount is {amt}. Payment is due as the parties agree in writing."
+        ],
+        [
+          "TERMINATION",
+          "Either party may end this agreement by written notice if the other party breaks it and does not fix the problem within 14 days."
+        ],
+        [
+          "GOVERNING LAW",
+          "This agreement is governed by the {law}."
+        ],
+        [
+          "SIGNATURES",
+          "Signed by {a} and {b} on {d1}."
+        ]
+      ]
+    },
+    {
+      "slug": "supply-agreement",
+      "title": "Supply Agreement",
+      "category": "Sale, supply & commercial",
+      "kind": "agreement",
+      "fields": [
+        {
+          "key": "a",
+          "label": "First party name",
+          "example": "Bright Builders Ltd",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "First party address",
+          "example": "Plot 50, Ntinda Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Second party name",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "ba",
+          "label": "Second party address",
+          "example": "Plot 27, Jinja Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Effective date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "d2",
+          "label": "End date",
+          "example": "2027-03-01",
+          "max_length": 500
+        },
+        {
+          "key": "amt",
+          "label": "Amount",
+          "example": "UGX 5,000,000",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Key terms",
+          "example": "The work will be completed within 90 days.",
+          "max_length": 4000
+        },
+        {
+          "key": "law",
+          "label": "Governing law",
+          "example": "Laws of the Republic of Uganda",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "PARTIES",
+          "This {T} is made on {d1} between {a}, of {aa} (the “First Party”), and {b}, of {ba} (the “Second Party”)."
+        ],
+        [
+          "TERM",
+          "This agreement starts on {d1} and ends on {d2} unless it is ended earlier under its terms."
+        ],
+        [
+          "KEY TERMS",
+          "{det}"
+        ],
+        [
+          "PAYMENT",
+          "The agreed amount is {amt}. Payment is due as the parties agree in writing."
+        ],
+        [
+          "TERMINATION",
+          "Either party may end this agreement by written notice if the other party breaks it and does not fix the problem within 14 days."
+        ],
+        [
+          "GOVERNING LAW",
+          "This agreement is governed by the {law}."
+        ],
+        [
+          "SIGNATURES",
+          "Signed by {a} and {b} on {d1}."
+        ]
+      ]
+    },
+    {
+      "slug": "distribution-agreement",
+      "title": "Distribution Agreement",
+      "category": "Sale, supply & commercial",
+      "kind": "agreement",
+      "fields": [
+        {
+          "key": "a",
+          "label": "First party name",
+          "example": "Bright Builders Ltd",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "First party address",
+          "example": "Plot 50, Ntinda Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Second party name",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "ba",
+          "label": "Second party address",
+          "example": "Plot 27, Jinja Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Effective date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "d2",
+          "label": "End date",
+          "example": "2027-03-01",
+          "max_length": 500
+        },
+        {
+          "key": "amt",
+          "label": "Amount",
+          "example": "UGX 5,000,000",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Key terms",
+          "example": "The work will be completed within 90 days.",
+          "max_length": 4000
+        },
+        {
+          "key": "law",
+          "label": "Governing law",
+          "example": "Laws of the Republic of Uganda",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "PARTIES",
+          "This {T} is made on {d1} between {a}, of {aa} (the “First Party”), and {b}, of {ba} (the “Second Party”)."
+        ],
+        [
+          "TERM",
+          "This agreement starts on {d1} and ends on {d2} unless it is ended earlier under its terms."
+        ],
+        [
+          "KEY TERMS",
+          "{det}"
+        ],
+        [
+          "PAYMENT",
+          "The agreed amount is {amt}. Payment is due as the parties agree in writing."
+        ],
+        [
+          "TERMINATION",
+          "Either party may end this agreement by written notice if the other party breaks it and does not fix the problem within 14 days."
+        ],
+        [
+          "GOVERNING LAW",
+          "This agreement is governed by the {law}."
+        ],
+        [
+          "SIGNATURES",
+          "Signed by {a} and {b} on {d1}."
+        ]
+      ]
+    },
+    {
+      "slug": "agency-agreement",
+      "title": "Agency Agreement",
+      "category": "Sale, supply & commercial",
+      "kind": "agreement",
+      "fields": [
+        {
+          "key": "a",
+          "label": "First party name",
+          "example": "Bright Builders Ltd",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "First party address",
+          "example": "Plot 50, Ntinda Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Second party name",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "ba",
+          "label": "Second party address",
+          "example": "Plot 27, Jinja Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Effective date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "d2",
+          "label": "End date",
+          "example": "2027-03-01",
+          "max_length": 500
+        },
+        {
+          "key": "amt",
+          "label": "Amount",
+          "example": "UGX 5,000,000",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Key terms",
+          "example": "The work will be completed within 90 days.",
+          "max_length": 4000
+        },
+        {
+          "key": "law",
+          "label": "Governing law",
+          "example": "Laws of the Republic of Uganda",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "PARTIES",
+          "This {T} is made on {d1} between {a}, of {aa} (the “First Party”), and {b}, of {ba} (the “Second Party”)."
+        ],
+        [
+          "TERM",
+          "This agreement starts on {d1} and ends on {d2} unless it is ended earlier under its terms."
+        ],
+        [
+          "KEY TERMS",
+          "{det}"
+        ],
+        [
+          "PAYMENT",
+          "The agreed amount is {amt}. Payment is due as the parties agree in writing."
+        ],
+        [
+          "TERMINATION",
+          "Either party may end this agreement by written notice if the other party breaks it and does not fix the problem within 14 days."
+        ],
+        [
+          "GOVERNING LAW",
+          "This agreement is governed by the {law}."
+        ],
+        [
+          "SIGNATURES",
+          "Signed by {a} and {b} on {d1}."
+        ]
+      ]
+    },
+    {
+      "slug": "purchase-order-terms",
+      "title": "Purchase Order Terms",
+      "category": "Sale, supply & commercial",
+      "kind": "agreement",
+      "fields": [
+        {
+          "key": "a",
+          "label": "First party name",
+          "example": "Bright Builders Ltd",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "First party address",
+          "example": "Plot 50, Ntinda Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Second party name",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "ba",
+          "label": "Second party address",
+          "example": "Plot 27, Jinja Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Effective date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "d2",
+          "label": "End date",
+          "example": "2027-03-01",
+          "max_length": 500
+        },
+        {
+          "key": "amt",
+          "label": "Amount",
+          "example": "UGX 5,000,000",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Key terms",
+          "example": "The work will be completed within 90 days.",
+          "max_length": 4000
+        },
+        {
+          "key": "law",
+          "label": "Governing law",
+          "example": "Laws of the Republic of Uganda",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "PARTIES",
+          "This {T} is made on {d1} between {a}, of {aa} (the “First Party”), and {b}, of {ba} (the “Second Party”)."
+        ],
+        [
+          "TERM",
+          "This agreement starts on {d1} and ends on {d2} unless it is ended earlier under its terms."
+        ],
+        [
+          "KEY TERMS",
+          "{det}"
+        ],
+        [
+          "PAYMENT",
+          "The agreed amount is {amt}. Payment is due as the parties agree in writing."
+        ],
+        [
+          "TERMINATION",
+          "Either party may end this agreement by written notice if the other party breaks it and does not fix the problem within 14 days."
+        ],
+        [
+          "GOVERNING LAW",
+          "This agreement is governed by the {law}."
+        ],
+        [
+          "SIGNATURES",
+          "Signed by {a} and {b} on {d1}."
+        ]
+      ]
+    },
+    {
+      "slug": "freelance-service-agreement",
+      "title": "Freelance Service Agreement",
+      "category": "Professional services",
+      "kind": "agreement",
+      "fields": [
+        {
+          "key": "a",
+          "label": "First party name",
+          "example": "Bright Builders Ltd",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "First party address",
+          "example": "Plot 50, Ntinda Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Second party name",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "ba",
+          "label": "Second party address",
+          "example": "Plot 27, Jinja Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Effective date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "d2",
+          "label": "End date",
+          "example": "2027-03-01",
+          "max_length": 500
+        },
+        {
+          "key": "amt",
+          "label": "Amount",
+          "example": "UGX 5,000,000",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Key terms",
+          "example": "The work will be completed within 90 days.",
+          "max_length": 4000
+        },
+        {
+          "key": "law",
+          "label": "Governing law",
+          "example": "Laws of the Republic of Uganda",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "PARTIES",
+          "This {T} is made on {d1} between {a}, of {aa} (the “First Party”), and {b}, of {ba} (the “Second Party”)."
+        ],
+        [
+          "TERM",
+          "This agreement starts on {d1} and ends on {d2} unless it is ended earlier under its terms."
+        ],
+        [
+          "KEY TERMS",
+          "{det}"
+        ],
+        [
+          "PAYMENT",
+          "The agreed amount is {amt}. Payment is due as the parties agree in writing."
+        ],
+        [
+          "TERMINATION",
+          "Either party may end this agreement by written notice if the other party breaks it and does not fix the problem within 14 days."
+        ],
+        [
+          "GOVERNING LAW",
+          "This agreement is governed by the {law}."
+        ],
+        [
+          "SIGNATURES",
+          "Signed by {a} and {b} on {d1}."
+        ]
+      ]
+    },
+    {
+      "slug": "consulting-agreement",
+      "title": "Consulting Agreement",
+      "category": "Professional services",
+      "kind": "agreement",
+      "fields": [
+        {
+          "key": "a",
+          "label": "First party name",
+          "example": "Bright Builders Ltd",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "First party address",
+          "example": "Plot 50, Ntinda Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Second party name",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "ba",
+          "label": "Second party address",
+          "example": "Plot 27, Jinja Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Effective date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "d2",
+          "label": "End date",
+          "example": "2027-03-01",
+          "max_length": 500
+        },
+        {
+          "key": "amt",
+          "label": "Amount",
+          "example": "UGX 5,000,000",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Key terms",
+          "example": "The work will be completed within 90 days.",
+          "max_length": 4000
+        },
+        {
+          "key": "law",
+          "label": "Governing law",
+          "example": "Laws of the Republic of Uganda",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "PARTIES",
+          "This {T} is made on {d1} between {a}, of {aa} (the “First Party”), and {b}, of {ba} (the “Second Party”)."
+        ],
+        [
+          "TERM",
+          "This agreement starts on {d1} and ends on {d2} unless it is ended earlier under its terms."
+        ],
+        [
+          "KEY TERMS",
+          "{det}"
+        ],
+        [
+          "PAYMENT",
+          "The agreed amount is {amt}. Payment is due as the parties agree in writing."
+        ],
+        [
+          "TERMINATION",
+          "Either party may end this agreement by written notice if the other party breaks it and does not fix the problem within 14 days."
+        ],
+        [
+          "GOVERNING LAW",
+          "This agreement is governed by the {law}."
+        ],
+        [
+          "SIGNATURES",
+          "Signed by {a} and {b} on {d1}."
+        ]
+      ]
+    },
+    {
+      "slug": "statement-of-work",
+      "title": "Statement of Work",
+      "category": "Professional services",
+      "kind": "agreement",
+      "fields": [
+        {
+          "key": "a",
+          "label": "First party name",
+          "example": "Bright Builders Ltd",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "First party address",
+          "example": "Plot 50, Ntinda Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Second party name",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "ba",
+          "label": "Second party address",
+          "example": "Plot 27, Jinja Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Effective date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "d2",
+          "label": "End date",
+          "example": "2027-03-01",
+          "max_length": 500
+        },
+        {
+          "key": "amt",
+          "label": "Amount",
+          "example": "UGX 5,000,000",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Key terms",
+          "example": "The work will be completed within 90 days.",
+          "max_length": 4000
+        },
+        {
+          "key": "law",
+          "label": "Governing law",
+          "example": "Laws of the Republic of Uganda",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "PARTIES",
+          "This {T} is made on {d1} between {a}, of {aa} (the “First Party”), and {b}, of {ba} (the “Second Party”)."
+        ],
+        [
+          "TERM",
+          "This agreement starts on {d1} and ends on {d2} unless it is ended earlier under its terms."
+        ],
+        [
+          "KEY TERMS",
+          "{det}"
+        ],
+        [
+          "PAYMENT",
+          "The agreed amount is {amt}. Payment is due as the parties agree in writing."
+        ],
+        [
+          "TERMINATION",
+          "Either party may end this agreement by written notice if the other party breaks it and does not fix the problem within 14 days."
+        ],
+        [
+          "GOVERNING LAW",
+          "This agreement is governed by the {law}."
+        ],
+        [
+          "SIGNATURES",
+          "Signed by {a} and {b} on {d1}."
+        ]
+      ]
+    },
+    {
+      "slug": "retainer-agreement",
+      "title": "Retainer Agreement",
+      "category": "Professional services",
+      "kind": "agreement",
+      "fields": [
+        {
+          "key": "a",
+          "label": "First party name",
+          "example": "Bright Builders Ltd",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "First party address",
+          "example": "Plot 50, Ntinda Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Second party name",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "ba",
+          "label": "Second party address",
+          "example": "Plot 27, Jinja Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Effective date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "d2",
+          "label": "End date",
+          "example": "2027-03-01",
+          "max_length": 500
+        },
+        {
+          "key": "amt",
+          "label": "Amount",
+          "example": "UGX 5,000,000",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Key terms",
+          "example": "The work will be completed within 90 days.",
+          "max_length": 4000
+        },
+        {
+          "key": "law",
+          "label": "Governing law",
+          "example": "Laws of the Republic of Uganda",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "PARTIES",
+          "This {T} is made on {d1} between {a}, of {aa} (the “First Party”), and {b}, of {ba} (the “Second Party”)."
+        ],
+        [
+          "TERM",
+          "This agreement starts on {d1} and ends on {d2} unless it is ended earlier under its terms."
+        ],
+        [
+          "KEY TERMS",
+          "{det}"
+        ],
+        [
+          "PAYMENT",
+          "The agreed amount is {amt}. Payment is due as the parties agree in writing."
+        ],
+        [
+          "TERMINATION",
+          "Either party may end this agreement by written notice if the other party breaks it and does not fix the problem within 14 days."
+        ],
+        [
+          "GOVERNING LAW",
+          "This agreement is governed by the {law}."
+        ],
+        [
+          "SIGNATURES",
+          "Signed by {a} and {b} on {d1}."
+        ]
+      ]
+    },
+    {
+      "slug": "demand-letter",
+      "title": "Demand Letter",
+      "category": "Notices & letters",
+      "kind": "letter",
+      "fields": [
+        {
+          "key": "a",
+          "label": "Sender name",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "Sender address",
+          "example": "Plot 27, Jinja Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Recipient name",
+          "example": "Kevin Odoch",
+          "max_length": 500
+        },
+        {
+          "key": "ba",
+          "label": "Recipient address",
+          "example": "Plot 15, Kira Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "sub",
+          "label": "Subject",
+          "example": "Subject of this document",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Details",
+          "example": "Explain the matter clearly and what you want to happen.",
+          "max_length": 4000
+        },
+        {
+          "key": "d2",
+          "label": "Respond by",
+          "example": "2026-12-15",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "",
+          "From: {a}, {aa}"
+        ],
+        [
+          "",
+          "To: {b}, {ba}"
+        ],
+        [
+          "",
+          "Date: {d1}"
+        ],
+        [
+          "SUBJECT",
+          "{sub}"
+        ],
+        [
+          "",
+          "Dear {b},"
+        ],
+        [
+          "",
+          "{det}"
+        ],
+        [
+          "",
+          "Please respond or act by {d2}."
+        ],
+        [
+          "",
+          "Yours sincerely, {a}"
+        ]
+      ]
+    },
+    {
+      "slug": "cease-and-desist-letter",
+      "title": "Cease and Desist Letter",
+      "category": "Notices & letters",
+      "kind": "letter",
+      "fields": [
+        {
+          "key": "a",
+          "label": "Sender name",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "Sender address",
+          "example": "Plot 27, Jinja Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Recipient name",
+          "example": "Kevin Odoch",
+          "max_length": 500
+        },
+        {
+          "key": "ba",
+          "label": "Recipient address",
+          "example": "Plot 15, Kira Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "sub",
+          "label": "Subject",
+          "example": "Subject of this document",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Details",
+          "example": "Explain the matter clearly and what you want to happen.",
+          "max_length": 4000
+        },
+        {
+          "key": "d2",
+          "label": "Respond by",
+          "example": "2026-12-15",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "",
+          "From: {a}, {aa}"
+        ],
+        [
+          "",
+          "To: {b}, {ba}"
+        ],
+        [
+          "",
+          "Date: {d1}"
+        ],
+        [
+          "SUBJECT",
+          "{sub}"
+        ],
+        [
+          "",
+          "Dear {b},"
+        ],
+        [
+          "",
+          "{det}"
+        ],
+        [
+          "",
+          "Please respond or act by {d2}."
+        ],
+        [
+          "",
+          "Yours sincerely, {a}"
+        ]
+      ]
+    },
+    {
+      "slug": "notice-of-breach",
+      "title": "Notice of Breach",
+      "category": "Notices & letters",
+      "kind": "letter",
+      "fields": [
+        {
+          "key": "a",
+          "label": "Sender name",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "Sender address",
+          "example": "Plot 27, Jinja Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Recipient name",
+          "example": "Kevin Odoch",
+          "max_length": 500
+        },
+        {
+          "key": "ba",
+          "label": "Recipient address",
+          "example": "Plot 15, Kira Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "sub",
+          "label": "Subject",
+          "example": "Subject of this document",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Details",
+          "example": "Explain the matter clearly and what you want to happen.",
+          "max_length": 4000
+        },
+        {
+          "key": "d2",
+          "label": "Respond by",
+          "example": "2026-12-15",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "",
+          "From: {a}, {aa}"
+        ],
+        [
+          "",
+          "To: {b}, {ba}"
+        ],
+        [
+          "",
+          "Date: {d1}"
+        ],
+        [
+          "SUBJECT",
+          "{sub}"
+        ],
+        [
+          "",
+          "Dear {b},"
+        ],
+        [
+          "",
+          "{det}"
+        ],
+        [
+          "",
+          "Please respond or act by {d2}."
+        ],
+        [
+          "",
+          "Yours sincerely, {a}"
+        ]
+      ]
+    },
+    {
+      "slug": "formal-complaint-letter",
+      "title": "Formal Complaint Letter",
+      "category": "Notices & letters",
+      "kind": "letter",
+      "fields": [
+        {
+          "key": "a",
+          "label": "Sender name",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "Sender address",
+          "example": "Plot 27, Jinja Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Recipient name",
+          "example": "Kevin Odoch",
+          "max_length": 500
+        },
+        {
+          "key": "ba",
+          "label": "Recipient address",
+          "example": "Plot 15, Kira Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "sub",
+          "label": "Subject",
+          "example": "Subject of this document",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Details",
+          "example": "Explain the matter clearly and what you want to happen.",
+          "max_length": 4000
+        },
+        {
+          "key": "d2",
+          "label": "Respond by",
+          "example": "2026-12-15",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "",
+          "From: {a}, {aa}"
+        ],
+        [
+          "",
+          "To: {b}, {ba}"
+        ],
+        [
+          "",
+          "Date: {d1}"
+        ],
+        [
+          "SUBJECT",
+          "{sub}"
+        ],
+        [
+          "",
+          "Dear {b},"
+        ],
+        [
+          "",
+          "{det}"
+        ],
+        [
+          "",
+          "Please respond or act by {d2}."
+        ],
+        [
+          "",
+          "Yours sincerely, {a}"
+        ]
+      ]
+    },
+    {
+      "slug": "anti-bribery-and-corruption-policy",
+      "title": "Anti-Bribery and Corruption Policy",
+      "category": "Company policies",
+      "kind": "policy",
+      "fields": [
+        {
+          "key": "a",
+          "label": "Company name",
+          "example": "Bright Builders Ltd",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "Company address",
+          "example": "Plot 50, Ntinda Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Effective date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "own",
+          "label": "Policy owner",
+          "example": "Kevin Odoch",
+          "max_length": 500
+        },
+        {
+          "key": "scope",
+          "label": "Who this applies to",
+          "example": "All employees, contractors and visitors",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Key commitments",
+          "example": "We follow the law and treat everyone fairly and with respect.",
+          "max_length": 4000
+        },
+        {
+          "key": "em",
+          "label": "Contact email",
+          "example": "legal@brightbuilders.example",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "PURPOSE",
+          "This {T} sets out how {a}, of {aa}, handles this matter."
+        ],
+        [
+          "SCOPE",
+          "This policy applies to {scope}."
+        ],
+        [
+          "POLICY",
+          "{det}"
+        ],
+        [
+          "RESPONSIBILITY",
+          "{own} is responsible for this policy and for keeping it up to date."
+        ],
+        [
+          "EFFECTIVE DATE",
+          "This policy takes effect on {d1}."
+        ],
+        [
+          "CONTACT",
+          "Questions about this policy go to {em}."
+        ]
+      ]
+    },
+    {
+      "slug": "anti-money-laundering-policy",
+      "title": "Anti-Money Laundering Policy",
+      "category": "Company policies",
+      "kind": "policy",
+      "fields": [
+        {
+          "key": "a",
+          "label": "Company name",
+          "example": "Bright Builders Ltd",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "Company address",
+          "example": "Plot 50, Ntinda Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Effective date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "own",
+          "label": "Policy owner",
+          "example": "Kevin Odoch",
+          "max_length": 500
+        },
+        {
+          "key": "scope",
+          "label": "Who this applies to",
+          "example": "All employees, contractors and visitors",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Key commitments",
+          "example": "We follow the law and treat everyone fairly and with respect.",
+          "max_length": 4000
+        },
+        {
+          "key": "em",
+          "label": "Contact email",
+          "example": "legal@brightbuilders.example",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "PURPOSE",
+          "This {T} sets out how {a}, of {aa}, handles this matter."
+        ],
+        [
+          "SCOPE",
+          "This policy applies to {scope}."
+        ],
+        [
+          "POLICY",
+          "{det}"
+        ],
+        [
+          "RESPONSIBILITY",
+          "{own} is responsible for this policy and for keeping it up to date."
+        ],
+        [
+          "EFFECTIVE DATE",
+          "This policy takes effect on {d1}."
+        ],
+        [
+          "CONTACT",
+          "Questions about this policy go to {em}."
+        ]
+      ]
+    },
+    {
+      "slug": "anti-slavery-policy-statement",
+      "title": "Anti-Slavery Policy Statement",
+      "category": "Company policies",
+      "kind": "policy",
+      "fields": [
+        {
+          "key": "a",
+          "label": "Company name",
+          "example": "Bright Builders Ltd",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "Company address",
+          "example": "Plot 50, Ntinda Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Effective date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "own",
+          "label": "Policy owner",
+          "example": "Kevin Odoch",
+          "max_length": 500
+        },
+        {
+          "key": "scope",
+          "label": "Who this applies to",
+          "example": "All employees, contractors and visitors",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Key commitments",
+          "example": "We follow the law and treat everyone fairly and with respect.",
+          "max_length": 4000
+        },
+        {
+          "key": "em",
+          "label": "Contact email",
+          "example": "legal@brightbuilders.example",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "PURPOSE",
+          "This {T} sets out how {a}, of {aa}, handles this matter."
+        ],
+        [
+          "SCOPE",
+          "This policy applies to {scope}."
+        ],
+        [
+          "POLICY",
+          "{det}"
+        ],
+        [
+          "RESPONSIBILITY",
+          "{own} is responsible for this policy and for keeping it up to date."
+        ],
+        [
+          "EFFECTIVE DATE",
+          "This policy takes effect on {d1}."
+        ],
+        [
+          "CONTACT",
+          "Questions about this policy go to {em}."
+        ]
+      ]
+    },
+    {
+      "slug": "anti-spam-policy",
+      "title": "Anti-Spam Policy",
+      "category": "Company policies",
+      "kind": "policy",
+      "fields": [
+        {
+          "key": "a",
+          "label": "Company name",
+          "example": "Bright Builders Ltd",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "Company address",
+          "example": "Plot 50, Ntinda Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Effective date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "own",
+          "label": "Policy owner",
+          "example": "Kevin Odoch",
+          "max_length": 500
+        },
+        {
+          "key": "scope",
+          "label": "Who this applies to",
+          "example": "All employees, contractors and visitors",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Key commitments",
+          "example": "We follow the law and treat everyone fairly and with respect.",
+          "max_length": 4000
+        },
+        {
+          "key": "em",
+          "label": "Contact email",
+          "example": "legal@brightbuilders.example",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "PURPOSE",
+          "This {T} sets out how {a}, of {aa}, handles this matter."
+        ],
+        [
+          "SCOPE",
+          "This policy applies to {scope}."
+        ],
+        [
+          "POLICY",
+          "{det}"
+        ],
+        [
+          "RESPONSIBILITY",
+          "{own} is responsible for this policy and for keeping it up to date."
+        ],
+        [
+          "EFFECTIVE DATE",
+          "This policy takes effect on {d1}."
+        ],
+        [
+          "CONTACT",
+          "Questions about this policy go to {em}."
+        ]
+      ]
+    },
+    {
+      "slug": "cell-phone-policy",
+      "title": "Cell Phone Policy",
+      "category": "Company policies",
+      "kind": "policy",
+      "fields": [
+        {
+          "key": "a",
+          "label": "Company name",
+          "example": "Bright Builders Ltd",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "Company address",
+          "example": "Plot 50, Ntinda Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Effective date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "own",
+          "label": "Policy owner",
+          "example": "Kevin Odoch",
+          "max_length": 500
+        },
+        {
+          "key": "scope",
+          "label": "Who this applies to",
+          "example": "All employees, contractors and visitors",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Key commitments",
+          "example": "We follow the law and treat everyone fairly and with respect.",
+          "max_length": 4000
+        },
+        {
+          "key": "em",
+          "label": "Contact email",
+          "example": "legal@brightbuilders.example",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "PURPOSE",
+          "This {T} sets out how {a}, of {aa}, handles this matter."
+        ],
+        [
+          "SCOPE",
+          "This policy applies to {scope}."
+        ],
+        [
+          "POLICY",
+          "{det}"
+        ],
+        [
+          "RESPONSIBILITY",
+          "{own} is responsible for this policy and for keeping it up to date."
+        ],
+        [
+          "EFFECTIVE DATE",
+          "This policy takes effect on {d1}."
+        ],
+        [
+          "CONTACT",
+          "Questions about this policy go to {em}."
+        ]
+      ]
+    },
+    {
+      "slug": "clean-desk-policy",
+      "title": "Clean Desk Policy",
+      "category": "Company policies",
+      "kind": "policy",
+      "fields": [
+        {
+          "key": "a",
+          "label": "Company name",
+          "example": "Bright Builders Ltd",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "Company address",
+          "example": "Plot 50, Ntinda Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Effective date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "own",
+          "label": "Policy owner",
+          "example": "Kevin Odoch",
+          "max_length": 500
+        },
+        {
+          "key": "scope",
+          "label": "Who this applies to",
+          "example": "All employees, contractors and visitors",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Key commitments",
+          "example": "We follow the law and treat everyone fairly and with respect.",
+          "max_length": 4000
+        },
+        {
+          "key": "em",
+          "label": "Contact email",
+          "example": "legal@brightbuilders.example",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "PURPOSE",
+          "This {T} sets out how {a}, of {aa}, handles this matter."
+        ],
+        [
+          "SCOPE",
+          "This policy applies to {scope}."
+        ],
+        [
+          "POLICY",
+          "{det}"
+        ],
+        [
+          "RESPONSIBILITY",
+          "{own} is responsible for this policy and for keeping it up to date."
+        ],
+        [
+          "EFFECTIVE DATE",
+          "This policy takes effect on {d1}."
+        ],
+        [
+          "CONTACT",
+          "Questions about this policy go to {em}."
+        ]
+      ]
+    },
+    {
+      "slug": "company-credit-card-policy",
+      "title": "Company Credit Card Policy",
+      "category": "Company policies",
+      "kind": "policy",
+      "fields": [
+        {
+          "key": "a",
+          "label": "Company name",
+          "example": "Bright Builders Ltd",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "Company address",
+          "example": "Plot 50, Ntinda Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Effective date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "own",
+          "label": "Policy owner",
+          "example": "Kevin Odoch",
+          "max_length": 500
+        },
+        {
+          "key": "scope",
+          "label": "Who this applies to",
+          "example": "All employees, contractors and visitors",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Key commitments",
+          "example": "We follow the law and treat everyone fairly and with respect.",
+          "max_length": 4000
+        },
+        {
+          "key": "em",
+          "label": "Contact email",
+          "example": "legal@brightbuilders.example",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "PURPOSE",
+          "This {T} sets out how {a}, of {aa}, handles this matter."
+        ],
+        [
+          "SCOPE",
+          "This policy applies to {scope}."
+        ],
+        [
+          "POLICY",
+          "{det}"
+        ],
+        [
+          "RESPONSIBILITY",
+          "{own} is responsible for this policy and for keeping it up to date."
+        ],
+        [
+          "EFFECTIVE DATE",
+          "This policy takes effect on {d1}."
+        ],
+        [
+          "CONTACT",
+          "Questions about this policy go to {em}."
+        ]
+      ]
+    },
+    {
+      "slug": "competition-terms-conditions",
+      "title": "Competition Terms & Conditions",
+      "category": "Company policies",
+      "kind": "policy",
+      "fields": [
+        {
+          "key": "a",
+          "label": "Company name",
+          "example": "Bright Builders Ltd",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "Company address",
+          "example": "Plot 50, Ntinda Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Effective date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "own",
+          "label": "Policy owner",
+          "example": "Kevin Odoch",
+          "max_length": 500
+        },
+        {
+          "key": "scope",
+          "label": "Who this applies to",
+          "example": "All employees, contractors and visitors",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Key commitments",
+          "example": "We follow the law and treat everyone fairly and with respect.",
+          "max_length": 4000
+        },
+        {
+          "key": "em",
+          "label": "Contact email",
+          "example": "legal@brightbuilders.example",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "PURPOSE",
+          "This {T} sets out how {a}, of {aa}, handles this matter."
+        ],
+        [
+          "SCOPE",
+          "This policy applies to {scope}."
+        ],
+        [
+          "POLICY",
+          "{det}"
+        ],
+        [
+          "RESPONSIBILITY",
+          "{own} is responsible for this policy and for keeping it up to date."
+        ],
+        [
+          "EFFECTIVE DATE",
+          "This policy takes effect on {d1}."
+        ],
+        [
+          "CONTACT",
+          "Questions about this policy go to {em}."
+        ]
+      ]
+    },
+    {
+      "slug": "cookie-policy",
+      "title": "Cookie Policy",
+      "category": "Company policies",
+      "kind": "policy",
+      "fields": [
+        {
+          "key": "a",
+          "label": "Company name",
+          "example": "Bright Builders Ltd",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "Company address",
+          "example": "Plot 50, Ntinda Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Effective date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "own",
+          "label": "Policy owner",
+          "example": "Kevin Odoch",
+          "max_length": 500
+        },
+        {
+          "key": "scope",
+          "label": "Who this applies to",
+          "example": "All employees, contractors and visitors",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Key commitments",
+          "example": "We follow the law and treat everyone fairly and with respect.",
+          "max_length": 4000
+        },
+        {
+          "key": "em",
+          "label": "Contact email",
+          "example": "legal@brightbuilders.example",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "PURPOSE",
+          "This {T} sets out how {a}, of {aa}, handles this matter."
+        ],
+        [
+          "SCOPE",
+          "This policy applies to {scope}."
+        ],
+        [
+          "POLICY",
+          "{det}"
+        ],
+        [
+          "RESPONSIBILITY",
+          "{own} is responsible for this policy and for keeping it up to date."
+        ],
+        [
+          "EFFECTIVE DATE",
+          "This policy takes effect on {d1}."
+        ],
+        [
+          "CONTACT",
+          "Questions about this policy go to {em}."
+        ]
+      ]
+    },
+    {
+      "slug": "privacy-policy",
+      "title": "Privacy Policy",
+      "category": "Company policies",
+      "kind": "policy",
+      "fields": [
+        {
+          "key": "a",
+          "label": "Company name",
+          "example": "Bright Builders Ltd",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "Company address",
+          "example": "Plot 50, Ntinda Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Effective date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "own",
+          "label": "Policy owner",
+          "example": "Kevin Odoch",
+          "max_length": 500
+        },
+        {
+          "key": "scope",
+          "label": "Who this applies to",
+          "example": "All employees, contractors and visitors",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Key commitments",
+          "example": "We follow the law and treat everyone fairly and with respect.",
+          "max_length": 4000
+        },
+        {
+          "key": "em",
+          "label": "Contact email",
+          "example": "legal@brightbuilders.example",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "PURPOSE",
+          "This {T} sets out how {a}, of {aa}, handles this matter."
+        ],
+        [
+          "SCOPE",
+          "This policy applies to {scope}."
+        ],
+        [
+          "POLICY",
+          "{det}"
+        ],
+        [
+          "RESPONSIBILITY",
+          "{own} is responsible for this policy and for keeping it up to date."
+        ],
+        [
+          "EFFECTIVE DATE",
+          "This policy takes effect on {d1}."
+        ],
+        [
+          "CONTACT",
+          "Questions about this policy go to {em}."
+        ]
+      ]
+    },
+    {
+      "slug": "code-of-conduct",
+      "title": "Code of Conduct",
+      "category": "Company policies",
+      "kind": "policy",
+      "fields": [
+        {
+          "key": "a",
+          "label": "Company name",
+          "example": "Bright Builders Ltd",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "Company address",
+          "example": "Plot 50, Ntinda Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Effective date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "own",
+          "label": "Policy owner",
+          "example": "Kevin Odoch",
+          "max_length": 500
+        },
+        {
+          "key": "scope",
+          "label": "Who this applies to",
+          "example": "All employees, contractors and visitors",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Key commitments",
+          "example": "We follow the law and treat everyone fairly and with respect.",
+          "max_length": 4000
+        },
+        {
+          "key": "em",
+          "label": "Contact email",
+          "example": "legal@brightbuilders.example",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "PURPOSE",
+          "This {T} sets out how {a}, of {aa}, handles this matter."
+        ],
+        [
+          "SCOPE",
+          "This policy applies to {scope}."
+        ],
+        [
+          "POLICY",
+          "{det}"
+        ],
+        [
+          "RESPONSIBILITY",
+          "{own} is responsible for this policy and for keeping it up to date."
+        ],
+        [
+          "EFFECTIVE DATE",
+          "This policy takes effect on {d1}."
+        ],
+        [
+          "CONTACT",
+          "Questions about this policy go to {em}."
+        ]
+      ]
+    },
+    {
+      "slug": "remote-work-policy",
+      "title": "Remote Work Policy",
+      "category": "Company policies",
+      "kind": "policy",
+      "fields": [
+        {
+          "key": "a",
+          "label": "Company name",
+          "example": "Bright Builders Ltd",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "Company address",
+          "example": "Plot 50, Ntinda Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Effective date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "own",
+          "label": "Policy owner",
+          "example": "Kevin Odoch",
+          "max_length": 500
+        },
+        {
+          "key": "scope",
+          "label": "Who this applies to",
+          "example": "All employees, contractors and visitors",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Key commitments",
+          "example": "We follow the law and treat everyone fairly and with respect.",
+          "max_length": 4000
+        },
+        {
+          "key": "em",
+          "label": "Contact email",
+          "example": "legal@brightbuilders.example",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "PURPOSE",
+          "This {T} sets out how {a}, of {aa}, handles this matter."
+        ],
+        [
+          "SCOPE",
+          "This policy applies to {scope}."
+        ],
+        [
+          "POLICY",
+          "{det}"
+        ],
+        [
+          "RESPONSIBILITY",
+          "{own} is responsible for this policy and for keeping it up to date."
+        ],
+        [
+          "EFFECTIVE DATE",
+          "This policy takes effect on {d1}."
+        ],
+        [
+          "CONTACT",
+          "Questions about this policy go to {em}."
+        ]
+      ]
+    },
+    {
+      "slug": "data-protection-policy",
+      "title": "Data Protection Policy",
+      "category": "Company policies",
+      "kind": "policy",
+      "fields": [
+        {
+          "key": "a",
+          "label": "Company name",
+          "example": "Bright Builders Ltd",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "Company address",
+          "example": "Plot 50, Ntinda Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Effective date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "own",
+          "label": "Policy owner",
+          "example": "Kevin Odoch",
+          "max_length": 500
+        },
+        {
+          "key": "scope",
+          "label": "Who this applies to",
+          "example": "All employees, contractors and visitors",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Key commitments",
+          "example": "We follow the law and treat everyone fairly and with respect.",
+          "max_length": 4000
+        },
+        {
+          "key": "em",
+          "label": "Contact email",
+          "example": "legal@brightbuilders.example",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "PURPOSE",
+          "This {T} sets out how {a}, of {aa}, handles this matter."
+        ],
+        [
+          "SCOPE",
+          "This policy applies to {scope}."
+        ],
+        [
+          "POLICY",
+          "{det}"
+        ],
+        [
+          "RESPONSIBILITY",
+          "{own} is responsible for this policy and for keeping it up to date."
+        ],
+        [
+          "EFFECTIVE DATE",
+          "This policy takes effect on {d1}."
+        ],
+        [
+          "CONTACT",
+          "Questions about this policy go to {em}."
+        ]
+      ]
+    },
+    {
+      "slug": "social-media-policy",
+      "title": "Social Media Policy",
+      "category": "Company policies",
+      "kind": "policy",
+      "fields": [
+        {
+          "key": "a",
+          "label": "Company name",
+          "example": "Bright Builders Ltd",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "Company address",
+          "example": "Plot 50, Ntinda Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Effective date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "own",
+          "label": "Policy owner",
+          "example": "Kevin Odoch",
+          "max_length": 500
+        },
+        {
+          "key": "scope",
+          "label": "Who this applies to",
+          "example": "All employees, contractors and visitors",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Key commitments",
+          "example": "We follow the law and treat everyone fairly and with respect.",
+          "max_length": 4000
+        },
+        {
+          "key": "em",
+          "label": "Contact email",
+          "example": "legal@brightbuilders.example",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "PURPOSE",
+          "This {T} sets out how {a}, of {aa}, handles this matter."
+        ],
+        [
+          "SCOPE",
+          "This policy applies to {scope}."
+        ],
+        [
+          "POLICY",
+          "{det}"
+        ],
+        [
+          "RESPONSIBILITY",
+          "{own} is responsible for this policy and for keeping it up to date."
+        ],
+        [
+          "EFFECTIVE DATE",
+          "This policy takes effect on {d1}."
+        ],
+        [
+          "CONTACT",
+          "Questions about this policy go to {em}."
+        ]
+      ]
+    },
+    {
+      "slug": "whistleblowing-policy",
+      "title": "Whistleblowing Policy",
+      "category": "Company policies",
+      "kind": "policy",
+      "fields": [
+        {
+          "key": "a",
+          "label": "Company name",
+          "example": "Bright Builders Ltd",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "Company address",
+          "example": "Plot 50, Ntinda Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Effective date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "own",
+          "label": "Policy owner",
+          "example": "Kevin Odoch",
+          "max_length": 500
+        },
+        {
+          "key": "scope",
+          "label": "Who this applies to",
+          "example": "All employees, contractors and visitors",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Key commitments",
+          "example": "We follow the law and treat everyone fairly and with respect.",
+          "max_length": 4000
+        },
+        {
+          "key": "em",
+          "label": "Contact email",
+          "example": "legal@brightbuilders.example",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "PURPOSE",
+          "This {T} sets out how {a}, of {aa}, handles this matter."
+        ],
+        [
+          "SCOPE",
+          "This policy applies to {scope}."
+        ],
+        [
+          "POLICY",
+          "{det}"
+        ],
+        [
+          "RESPONSIBILITY",
+          "{own} is responsible for this policy and for keeping it up to date."
+        ],
+        [
+          "EFFECTIVE DATE",
+          "This policy takes effect on {d1}."
+        ],
+        [
+          "CONTACT",
+          "Questions about this policy go to {em}."
+        ]
+      ]
+    },
+    {
+      "slug": "health-and-safety-policy",
+      "title": "Health and Safety Policy",
+      "category": "Company policies",
+      "kind": "policy",
+      "fields": [
+        {
+          "key": "a",
+          "label": "Company name",
+          "example": "Bright Builders Ltd",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "Company address",
+          "example": "Plot 50, Ntinda Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Effective date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "own",
+          "label": "Policy owner",
+          "example": "Kevin Odoch",
+          "max_length": 500
+        },
+        {
+          "key": "scope",
+          "label": "Who this applies to",
+          "example": "All employees, contractors and visitors",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Key commitments",
+          "example": "We follow the law and treat everyone fairly and with respect.",
+          "max_length": 4000
+        },
+        {
+          "key": "em",
+          "label": "Contact email",
+          "example": "legal@brightbuilders.example",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "PURPOSE",
+          "This {T} sets out how {a}, of {aa}, handles this matter."
+        ],
+        [
+          "SCOPE",
+          "This policy applies to {scope}."
+        ],
+        [
+          "POLICY",
+          "{det}"
+        ],
+        [
+          "RESPONSIBILITY",
+          "{own} is responsible for this policy and for keeping it up to date."
+        ],
+        [
+          "EFFECTIVE DATE",
+          "This policy takes effect on {d1}."
+        ],
+        [
+          "CONTACT",
+          "Questions about this policy go to {em}."
+        ]
+      ]
+    },
+    {
+      "slug": "equal-opportunities-policy",
+      "title": "Equal Opportunities Policy",
+      "category": "Company policies",
+      "kind": "policy",
+      "fields": [
+        {
+          "key": "a",
+          "label": "Company name",
+          "example": "Bright Builders Ltd",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "Company address",
+          "example": "Plot 50, Ntinda Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Effective date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "own",
+          "label": "Policy owner",
+          "example": "Kevin Odoch",
+          "max_length": 500
+        },
+        {
+          "key": "scope",
+          "label": "Who this applies to",
+          "example": "All employees, contractors and visitors",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Key commitments",
+          "example": "We follow the law and treat everyone fairly and with respect.",
+          "max_length": 4000
+        },
+        {
+          "key": "em",
+          "label": "Contact email",
+          "example": "legal@brightbuilders.example",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "PURPOSE",
+          "This {T} sets out how {a}, of {aa}, handles this matter."
+        ],
+        [
+          "SCOPE",
+          "This policy applies to {scope}."
+        ],
+        [
+          "POLICY",
+          "{det}"
+        ],
+        [
+          "RESPONSIBILITY",
+          "{own} is responsible for this policy and for keeping it up to date."
+        ],
+        [
+          "EFFECTIVE DATE",
+          "This policy takes effect on {d1}."
+        ],
+        [
+          "CONTACT",
+          "Questions about this policy go to {em}."
+        ]
+      ]
+    },
+    {
+      "slug": "affidavit-of-support",
+      "title": "Affidavit of Support",
+      "category": "Affidavits, powers of attorney & family",
+      "kind": "declaration",
+      "fields": [
+        {
+          "key": "a",
+          "label": "Full name",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "Address",
+          "example": "Plot 27, Jinja Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Other person (agent, beneficiary or witness)",
+          "example": "Kevin Odoch",
+          "max_length": 500
+        },
+        {
+          "key": "ba",
+          "label": "Other person’s address",
+          "example": "Plot 15, Kira Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Statement or instructions",
+          "example": "State the facts or instructions you want recorded.",
+          "max_length": 4000
+        },
+        {
+          "key": "law",
+          "label": "Governing law",
+          "example": "Laws of the Republic of Uganda",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "DECLARATION",
+          "I, {a}, of {aa}, make this {T} on {d1}."
+        ],
+        [
+          "OTHER PERSON",
+          "This document names {b}, of {ba}."
+        ],
+        [
+          "DETAILS",
+          "{det}"
+        ],
+        [
+          "GOVERNING LAW",
+          "This document is governed by the {law}."
+        ],
+        [
+          "SIGNATURE",
+          "Signed by {a} on {d1} in the presence of {b}."
+        ]
+      ]
+    },
+    {
+      "slug": "general-power-of-attorney",
+      "title": "General Power of Attorney",
+      "category": "Affidavits, powers of attorney & family",
+      "kind": "declaration",
+      "fields": [
+        {
+          "key": "a",
+          "label": "Full name",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "Address",
+          "example": "Plot 27, Jinja Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Other person (agent, beneficiary or witness)",
+          "example": "Kevin Odoch",
+          "max_length": 500
+        },
+        {
+          "key": "ba",
+          "label": "Other person’s address",
+          "example": "Plot 15, Kira Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Statement or instructions",
+          "example": "State the facts or instructions you want recorded.",
+          "max_length": 4000
+        },
+        {
+          "key": "law",
+          "label": "Governing law",
+          "example": "Laws of the Republic of Uganda",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "DECLARATION",
+          "I, {a}, of {aa}, make this {T} on {d1}."
+        ],
+        [
+          "OTHER PERSON",
+          "This document names {b}, of {ba}."
+        ],
+        [
+          "DETAILS",
+          "{det}"
+        ],
+        [
+          "GOVERNING LAW",
+          "This document is governed by the {law}."
+        ],
+        [
+          "SIGNATURE",
+          "Signed by {a} on {d1} in the presence of {b}."
+        ]
+      ]
+    },
+    {
+      "slug": "will",
+      "title": "Will",
+      "category": "Affidavits, powers of attorney & family",
+      "kind": "declaration",
+      "fields": [
+        {
+          "key": "a",
+          "label": "Full name",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "Address",
+          "example": "Plot 27, Jinja Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Other person (agent, beneficiary or witness)",
+          "example": "Kevin Odoch",
+          "max_length": 500
+        },
+        {
+          "key": "ba",
+          "label": "Other person’s address",
+          "example": "Plot 15, Kira Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Statement or instructions",
+          "example": "State the facts or instructions you want recorded.",
+          "max_length": 4000
+        },
+        {
+          "key": "law",
+          "label": "Governing law",
+          "example": "Laws of the Republic of Uganda",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "DECLARATION",
+          "I, {a}, of {aa}, make this {T} on {d1}."
+        ],
+        [
+          "OTHER PERSON",
+          "This document names {b}, of {ba}."
+        ],
+        [
+          "DETAILS",
+          "{det}"
+        ],
+        [
+          "GOVERNING LAW",
+          "This document is governed by the {law}."
+        ],
+        [
+          "SIGNATURE",
+          "Signed by {a} on {d1} in the presence of {b}."
+        ]
+      ]
+    },
+    {
+      "slug": "child-custody-agreement",
+      "title": "Child Custody Agreement",
+      "category": "Affidavits, powers of attorney & family",
+      "kind": "declaration",
+      "fields": [
+        {
+          "key": "a",
+          "label": "Full name",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "Address",
+          "example": "Plot 27, Jinja Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Other person (agent, beneficiary or witness)",
+          "example": "Kevin Odoch",
+          "max_length": 500
+        },
+        {
+          "key": "ba",
+          "label": "Other person’s address",
+          "example": "Plot 15, Kira Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Statement or instructions",
+          "example": "State the facts or instructions you want recorded.",
+          "max_length": 4000
+        },
+        {
+          "key": "law",
+          "label": "Governing law",
+          "example": "Laws of the Republic of Uganda",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "DECLARATION",
+          "I, {a}, of {aa}, make this {T} on {d1}."
+        ],
+        [
+          "OTHER PERSON",
+          "This document names {b}, of {ba}."
+        ],
+        [
+          "DETAILS",
+          "{det}"
+        ],
+        [
+          "GOVERNING LAW",
+          "This document is governed by the {law}."
+        ],
+        [
+          "SIGNATURE",
+          "Signed by {a} on {d1} in the presence of {b}."
+        ]
+      ]
+    },
+    {
+      "slug": "software-licence-agreement",
+      "title": "Software Licence Agreement",
+      "category": "IP, media & licences",
+      "kind": "agreement",
+      "fields": [
+        {
+          "key": "a",
+          "label": "First party name",
+          "example": "Bright Builders Ltd",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "First party address",
+          "example": "Plot 50, Ntinda Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Second party name",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "ba",
+          "label": "Second party address",
+          "example": "Plot 27, Jinja Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Effective date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "d2",
+          "label": "End date",
+          "example": "2027-03-01",
+          "max_length": 500
+        },
+        {
+          "key": "amt",
+          "label": "Amount",
+          "example": "UGX 5,000,000",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Key terms",
+          "example": "The work will be completed within 90 days.",
+          "max_length": 4000
+        },
+        {
+          "key": "law",
+          "label": "Governing law",
+          "example": "Laws of the Republic of Uganda",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "PARTIES",
+          "This {T} is made on {d1} between {a}, of {aa} (the “First Party”), and {b}, of {ba} (the “Second Party”)."
+        ],
+        [
+          "TERM",
+          "This agreement starts on {d1} and ends on {d2} unless it is ended earlier under its terms."
+        ],
+        [
+          "KEY TERMS",
+          "{det}"
+        ],
+        [
+          "PAYMENT",
+          "The agreed amount is {amt}. Payment is due as the parties agree in writing."
+        ],
+        [
+          "TERMINATION",
+          "Either party may end this agreement by written notice if the other party breaks it and does not fix the problem within 14 days."
+        ],
+        [
+          "GOVERNING LAW",
+          "This agreement is governed by the {law}."
+        ],
+        [
+          "SIGNATURES",
+          "Signed by {a} and {b} on {d1}."
+        ]
+      ]
+    },
+    {
+      "slug": "copyright-assignment",
+      "title": "Copyright Assignment",
+      "category": "IP, media & licences",
+      "kind": "agreement",
+      "fields": [
+        {
+          "key": "a",
+          "label": "First party name",
+          "example": "Bright Builders Ltd",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "First party address",
+          "example": "Plot 50, Ntinda Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Second party name",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "ba",
+          "label": "Second party address",
+          "example": "Plot 27, Jinja Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Effective date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "d2",
+          "label": "End date",
+          "example": "2027-03-01",
+          "max_length": 500
+        },
+        {
+          "key": "amt",
+          "label": "Amount",
+          "example": "UGX 5,000,000",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Key terms",
+          "example": "The work will be completed within 90 days.",
+          "max_length": 4000
+        },
+        {
+          "key": "law",
+          "label": "Governing law",
+          "example": "Laws of the Republic of Uganda",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "PARTIES",
+          "This {T} is made on {d1} between {a}, of {aa} (the “First Party”), and {b}, of {ba} (the “Second Party”)."
+        ],
+        [
+          "TERM",
+          "This agreement starts on {d1} and ends on {d2} unless it is ended earlier under its terms."
+        ],
+        [
+          "KEY TERMS",
+          "{det}"
+        ],
+        [
+          "PAYMENT",
+          "The agreed amount is {amt}. Payment is due as the parties agree in writing."
+        ],
+        [
+          "TERMINATION",
+          "Either party may end this agreement by written notice if the other party breaks it and does not fix the problem within 14 days."
+        ],
+        [
+          "GOVERNING LAW",
+          "This agreement is governed by the {law}."
+        ],
+        [
+          "SIGNATURES",
+          "Signed by {a} and {b} on {d1}."
+        ]
+      ]
+    },
+    {
+      "slug": "trademark-licence",
+      "title": "Trademark Licence",
+      "category": "IP, media & licences",
+      "kind": "agreement",
+      "fields": [
+        {
+          "key": "a",
+          "label": "First party name",
+          "example": "Bright Builders Ltd",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "First party address",
+          "example": "Plot 50, Ntinda Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Second party name",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "ba",
+          "label": "Second party address",
+          "example": "Plot 27, Jinja Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Effective date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "d2",
+          "label": "End date",
+          "example": "2027-03-01",
+          "max_length": 500
+        },
+        {
+          "key": "amt",
+          "label": "Amount",
+          "example": "UGX 5,000,000",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Key terms",
+          "example": "The work will be completed within 90 days.",
+          "max_length": 4000
+        },
+        {
+          "key": "law",
+          "label": "Governing law",
+          "example": "Laws of the Republic of Uganda",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "PARTIES",
+          "This {T} is made on {d1} between {a}, of {aa} (the “First Party”), and {b}, of {ba} (the “Second Party”)."
+        ],
+        [
+          "TERM",
+          "This agreement starts on {d1} and ends on {d2} unless it is ended earlier under its terms."
+        ],
+        [
+          "KEY TERMS",
+          "{det}"
+        ],
+        [
+          "PAYMENT",
+          "The agreed amount is {amt}. Payment is due as the parties agree in writing."
+        ],
+        [
+          "TERMINATION",
+          "Either party may end this agreement by written notice if the other party breaks it and does not fix the problem within 14 days."
+        ],
+        [
+          "GOVERNING LAW",
+          "This agreement is governed by the {law}."
+        ],
+        [
+          "SIGNATURES",
+          "Signed by {a} and {b} on {d1}."
+        ]
+      ]
+    },
+    {
+      "slug": "photo-release-form",
+      "title": "Photo Release Form",
+      "category": "IP, media & licences",
+      "kind": "letter",
+      "fields": [
+        {
+          "key": "a",
+          "label": "Sender name",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "Sender address",
+          "example": "Plot 27, Jinja Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Recipient name",
+          "example": "Kevin Odoch",
+          "max_length": 500
+        },
+        {
+          "key": "ba",
+          "label": "Recipient address",
+          "example": "Plot 15, Kira Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "sub",
+          "label": "Subject",
+          "example": "Subject of this document",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Details",
+          "example": "Explain the matter clearly and what you want to happen.",
+          "max_length": 4000
+        },
+        {
+          "key": "d2",
+          "label": "Respond by",
+          "example": "2026-12-15",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "",
+          "From: {a}, {aa}"
+        ],
+        [
+          "",
+          "To: {b}, {ba}"
+        ],
+        [
+          "",
+          "Date: {d1}"
+        ],
+        [
+          "SUBJECT",
+          "{sub}"
+        ],
+        [
+          "",
+          "Dear {b},"
+        ],
+        [
+          "",
+          "{det}"
+        ],
+        [
+          "",
+          "Please respond or act by {d2}."
+        ],
+        [
+          "",
+          "Yours sincerely, {a}"
+        ]
+      ]
+    },
+    {
+      "slug": "invoice",
+      "title": "Invoice",
+      "category": "Finance, invoices & receipts",
+      "kind": "finance",
+      "fields": [
+        {
+          "key": "a",
+          "label": "Payee name",
+          "example": "Bright Builders Ltd",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Payer name",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "amt",
+          "label": "Amount",
+          "example": "UGX 5,000,000",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Description",
+          "example": "Payment for services provided",
+          "max_length": 4000
+        },
+        {
+          "key": "pm",
+          "label": "Payment method",
+          "example": "Mobile money",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "DATE",
+          "{d1}"
+        ],
+        [
+          "FROM",
+          "{b}"
+        ],
+        [
+          "TO",
+          "{a}"
+        ],
+        [
+          "AMOUNT",
+          "{amt}"
+        ],
+        [
+          "FOR",
+          "{det}"
+        ],
+        [
+          "PAYMENT METHOD",
+          "{pm}"
+        ]
+      ]
+    },
+    {
+      "slug": "loan-agreement",
+      "title": "Loan Agreement",
+      "category": "Finance, invoices & receipts",
+      "kind": "agreement",
+      "fields": [
+        {
+          "key": "a",
+          "label": "First party name",
+          "example": "Bright Builders Ltd",
+          "max_length": 500
+        },
+        {
+          "key": "aa",
+          "label": "First party address",
+          "example": "Plot 50, Ntinda Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Second party name",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "ba",
+          "label": "Second party address",
+          "example": "Plot 27, Jinja Road, Kampala, Uganda",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Effective date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "d2",
+          "label": "End date",
+          "example": "2027-03-01",
+          "max_length": 500
+        },
+        {
+          "key": "amt",
+          "label": "Amount",
+          "example": "UGX 5,000,000",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Key terms",
+          "example": "The work will be completed within 90 days.",
+          "max_length": 4000
+        },
+        {
+          "key": "law",
+          "label": "Governing law",
+          "example": "Laws of the Republic of Uganda",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "PARTIES",
+          "This {T} is made on {d1} between {a}, of {aa} (the “First Party”), and {b}, of {ba} (the “Second Party”)."
+        ],
+        [
+          "TERM",
+          "This agreement starts on {d1} and ends on {d2} unless it is ended earlier under its terms."
+        ],
+        [
+          "KEY TERMS",
+          "{det}"
+        ],
+        [
+          "PAYMENT",
+          "The agreed amount is {amt}. Payment is due as the parties agree in writing."
+        ],
+        [
+          "TERMINATION",
+          "Either party may end this agreement by written notice if the other party breaks it and does not fix the problem within 14 days."
+        ],
+        [
+          "GOVERNING LAW",
+          "This agreement is governed by the {law}."
+        ],
+        [
+          "SIGNATURES",
+          "Signed by {a} and {b} on {d1}."
+        ]
+      ]
+    },
+    {
+      "slug": "payment-receipt",
+      "title": "Payment Receipt",
+      "category": "Finance, invoices & receipts",
+      "kind": "finance",
+      "fields": [
+        {
+          "key": "a",
+          "label": "Payee name",
+          "example": "Bright Builders Ltd",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Payer name",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "amt",
+          "label": "Amount",
+          "example": "UGX 5,000,000",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Description",
+          "example": "Payment for services provided",
+          "max_length": 4000
+        },
+        {
+          "key": "pm",
+          "label": "Payment method",
+          "example": "Mobile money",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "DATE",
+          "{d1}"
+        ],
+        [
+          "FROM",
+          "{b}"
+        ],
+        [
+          "TO",
+          "{a}"
+        ],
+        [
+          "AMOUNT",
+          "{amt}"
+        ],
+        [
+          "FOR",
+          "{det}"
+        ],
+        [
+          "PAYMENT METHOD",
+          "{pm}"
+        ]
+      ]
+    },
+    {
+      "slug": "iou-note",
+      "title": "IOU Note",
+      "category": "Finance, invoices & receipts",
+      "kind": "finance",
+      "fields": [
+        {
+          "key": "a",
+          "label": "Payee name",
+          "example": "Bright Builders Ltd",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Payer name",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "amt",
+          "label": "Amount",
+          "example": "UGX 5,000,000",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Description",
+          "example": "Payment for services provided",
+          "max_length": 4000
+        },
+        {
+          "key": "pm",
+          "label": "Payment method",
+          "example": "Mobile money",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "DATE",
+          "{d1}"
+        ],
+        [
+          "FROM",
+          "{b}"
+        ],
+        [
+          "TO",
+          "{a}"
+        ],
+        [
+          "AMOUNT",
+          "{amt}"
+        ],
+        [
+          "FOR",
+          "{det}"
+        ],
+        [
+          "PAYMENT METHOD",
+          "{pm}"
+        ]
+      ]
+    },
+    {
+      "slug": "court-judgment",
+      "title": "Court Judgment",
+      "category": "Judgments & rulings",
+      "kind": "court",
+      "fields": [
+        {
+          "key": "court",
+          "label": "Court name",
+          "example": "High Court of Uganda at Kampala",
+          "max_length": 500
+        },
+        {
+          "key": "cn",
+          "label": "Case number",
+          "example": "HCCS No. 123 of 2026",
+          "max_length": 500
+        },
+        {
+          "key": "a",
+          "label": "Claimant",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Defendant",
+          "example": "Bright Builders Ltd",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Facts",
+          "example": "Set out the facts of the case in order.",
+          "max_length": 4000
+        },
+        {
+          "key": "rel",
+          "label": "Relief sought",
+          "example": "Payment of UGX 5,000,000 and costs of the suit.",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "COURT",
+          "In the {court}, {cn}."
+        ],
+        [
+          "PARTIES",
+          "Between {a} (Claimant) and {b} (Defendant)."
+        ],
+        [
+          "FACTS",
+          "{det}"
+        ],
+        [
+          "RELIEF",
+          "The Claimant asks the court for: {rel}"
+        ],
+        [
+          "DATE",
+          "Dated {d1}."
+        ]
+      ]
+    },
+    {
+      "slug": "statement-of-claim",
+      "title": "Statement of Claim",
+      "category": "Pleadings & court process",
+      "kind": "court",
+      "fields": [
+        {
+          "key": "court",
+          "label": "Court name",
+          "example": "High Court of Uganda at Kampala",
+          "max_length": 500
+        },
+        {
+          "key": "cn",
+          "label": "Case number",
+          "example": "HCCS No. 123 of 2026",
+          "max_length": 500
+        },
+        {
+          "key": "a",
+          "label": "Claimant",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Defendant",
+          "example": "Bright Builders Ltd",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Facts",
+          "example": "Set out the facts of the case in order.",
+          "max_length": 4000
+        },
+        {
+          "key": "rel",
+          "label": "Relief sought",
+          "example": "Payment of UGX 5,000,000 and costs of the suit.",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "COURT",
+          "In the {court}, {cn}."
+        ],
+        [
+          "PARTIES",
+          "Between {a} (Claimant) and {b} (Defendant)."
+        ],
+        [
+          "FACTS",
+          "{det}"
+        ],
+        [
+          "RELIEF",
+          "The Claimant asks the court for: {rel}"
+        ],
+        [
+          "DATE",
+          "Dated {d1}."
+        ]
+      ]
+    },
+    {
+      "slug": "statement-of-defence",
+      "title": "Statement of Defence",
+      "category": "Pleadings & court process",
+      "kind": "court",
+      "fields": [
+        {
+          "key": "court",
+          "label": "Court name",
+          "example": "High Court of Uganda at Kampala",
+          "max_length": 500
+        },
+        {
+          "key": "cn",
+          "label": "Case number",
+          "example": "HCCS No. 123 of 2026",
+          "max_length": 500
+        },
+        {
+          "key": "a",
+          "label": "Claimant",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Defendant",
+          "example": "Bright Builders Ltd",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Facts",
+          "example": "Set out the facts of the case in order.",
+          "max_length": 4000
+        },
+        {
+          "key": "rel",
+          "label": "Relief sought",
+          "example": "Payment of UGX 5,000,000 and costs of the suit.",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "COURT",
+          "In the {court}, {cn}."
+        ],
+        [
+          "PARTIES",
+          "Between {a} (Claimant) and {b} (Defendant)."
+        ],
+        [
+          "FACTS",
+          "{det}"
+        ],
+        [
+          "RELIEF",
+          "The Claimant asks the court for: {rel}"
+        ],
+        [
+          "DATE",
+          "Dated {d1}."
+        ]
+      ]
+    },
+    {
+      "slug": "notice-of-motion",
+      "title": "Notice of Motion",
+      "category": "Pleadings & court process",
+      "kind": "court",
+      "fields": [
+        {
+          "key": "court",
+          "label": "Court name",
+          "example": "High Court of Uganda at Kampala",
+          "max_length": 500
+        },
+        {
+          "key": "cn",
+          "label": "Case number",
+          "example": "HCCS No. 123 of 2026",
+          "max_length": 500
+        },
+        {
+          "key": "a",
+          "label": "Claimant",
+          "example": "Grace Nakimera",
+          "max_length": 500
+        },
+        {
+          "key": "b",
+          "label": "Defendant",
+          "example": "Bright Builders Ltd",
+          "max_length": 500
+        },
+        {
+          "key": "d1",
+          "label": "Date",
+          "example": "2026-12-01",
+          "max_length": 500
+        },
+        {
+          "key": "det",
+          "label": "Facts",
+          "example": "Set out the facts of the case in order.",
+          "max_length": 4000
+        },
+        {
+          "key": "rel",
+          "label": "Relief sought",
+          "example": "Payment of UGX 5,000,000 and costs of the suit.",
+          "max_length": 500
+        }
+      ],
+      "body": [
+        [
+          "COURT",
+          "In the {court}, {cn}."
+        ],
+        [
+          "PARTIES",
+          "Between {a} (Claimant) and {b} (Defendant)."
+        ],
+        [
+          "FACTS",
+          "{det}"
+        ],
+        [
+          "RELIEF",
+          "The Claimant asks the court for: {rel}"
+        ],
+        [
+          "DATE",
+          "Dated {d1}."
+        ]
+      ]
+    }
+  ]
+}

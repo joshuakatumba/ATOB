@@ -1,0 +1,580 @@
+[
+  {
+    "slug": "employment-contract",
+    "title": "Employment Contract",
+    "category": "Employment & workplace",
+    "label": "FAKE – development only",
+    "fields": [
+      {
+        "key": "name",
+        "label": "Name",
+        "example": "FAKE Example Name",
+        "max_length": 200
+      },
+      {
+        "key": "det",
+        "label": "Details",
+        "example": "FAKE development details",
+        "max_length": 2000
+      }
+    ],
+    "body": [
+      [
+        "",
+        "FAKE – development only"
+      ],
+      [
+        "",
+        "{name}"
+      ],
+      [
+        "",
+        "{det}"
+      ]
+    ]
+  },
+  {
+    "slug": "offer-letter",
+    "title": "Offer Letter",
+    "category": "Employment & workplace",
+    "label": "FAKE – development only",
+    "fields": [
+      {
+        "key": "name",
+        "label": "Name",
+        "example": "FAKE Example Name",
+        "max_length": 200
+      },
+      {
+        "key": "det",
+        "label": "Details",
+        "example": "FAKE development details",
+        "max_length": 2000
+      }
+    ],
+    "body": [
+      [
+        "",
+        "FAKE – development only"
+      ],
+      [
+        "",
+        "{name}"
+      ],
+      [
+        "",
+        "{det}"
+      ]
+    ]
+  },
+  {
+    "slug": "internship-agreement",
+    "title": "Internship Agreement",
+    "category": "Employment & workplace",
+    "label": "FAKE – development only",
+    "fields": [
+      {
+        "key": "name",
+        "label": "Name",
+        "example": "FAKE Example Name",
+        "max_length": 200
+      },
+      {
+        "key": "det",
+        "label": "Details",
+        "example": "FAKE development details",
+        "max_length": 2000
+      }
+    ],
+    "body": [
+      [
+        "",
+        "FAKE – development only"
+      ],
+      [
+        "",
+        "{name}"
+      ],
+      [
+        "",
+        "{det}"
+      ]
+    ]
+  },
+  {
+    "slug": "consultancy-agreement",
+    "title": "Consultancy Agreement",
+    "category": "Employment & workplace",
+    "label": "FAKE – development only",
+    "fields": [
+      {
+        "key": "name",
+        "label": "Name",
+        "example": "FAKE Example Name",
+        "max_length": 200
+      },
+      {
+        "key": "det",
+        "label": "Details",
+        "example": "FAKE development details",
+        "max_length": 2000
+      }
+    ],
+    "body": [
+      [
+        "",
+        "FAKE – development only"
+      ],
+      [
+        "",
+        "{name}"
+      ],
+      [
+        "",
+        "{det}"
+      ]
+    ]
+  },
+  {
+    "slug": "non-disclosure-agreement",
+    "title": "Non-Disclosure Agreement",
+    "category": "Employment & workplace",
+    "label": "FAKE – development only",
+    "fields": [
+      {
+        "key": "name",
+        "label": "Name",
+        "example": "FAKE Example Name",
+        "max_length": 200
+      },
+      {
+        "key": "det",
+        "label": "Details",
+        "example": "FAKE development details",
+        "max_length": 2000
+      }
+    ],
+    "body": [
+      [
+        "",
+        "FAKE – development only"
+      ],
+      [
+        "",
+        "{name}"
+      ],
+      [
+        "",
+        "{det}"
+      ]
+    ]
+  },
+  {
+    "slug": "termination-letter",
+    "title": "Termination Letter",
+    "category": "Employment & workplace",
+    "label": "FAKE – development only",
+    "fields": [
+      {
+        "key": "name",
+        "label": "Name",
+        "example": "FAKE Example Name",
+        "max_length": 200
+      },
+      {
+        "key": "det",
+        "label": "Details",
+        "example": "FAKE development details",
+        "max_length": 2000
+      }
+    ],
+    "body": [
+      [
+        "",
+        "FAKE – development only"
+      ],
+      [
+        "",
+        "{name}"
+      ],
+      [
+        "",
+        "{det}"
+      ]
+    ]
+  },
+  {
+    "slug": "warning-letter",
+    "title": "Warning Letter",
+    "category": "Employment & workplace",
+    "label": "FAKE – development only",
+    "fields": [
+      {
+        "key": "name",
+        "label": "Name",
+        "example": "FAKE Example Name",
+        "max_length": 200
+      },
+      {
+        "key": "det",
+        "label": "Details",
+        "example": "FAKE development details",
+        "max_length": 2000
+      }
+    ],
+    "body": [
+      [
+        "",
+        "FAKE – development only"
+      ],
+      [
+        "",
+        "{name}"
+      ],
+      [
+        "",
+        "{det}"
+      ]
+    ]
+  },
+  {
+    "slug": "leave-request",
+    "title": "Leave Request",
+    "category": "Employment & workplace",
+    "label": "FAKE – development only",
+    "fields": [
+      {
+        "key": "name",
+        "label": "Name",
+        "example": "FAKE Example Name",
+        "max_length": 200
+      },
+      {
+        "key": "det",
+        "label": "Details",
+        "example": "FAKE development details",
+        "max_length": 2000
+      }
+    ],
+    "body": [
+      [
+        "",
+        "FAKE – development only"
+      ],
+      [
+        "",
+        "{name}"
+      ],
+      [
+        "",
+        "{det}"
+      ]
+    ]
+  },
+  {
+    "slug": "reference-letter",
+    "title": "Reference Letter",
+    "category": "Employment & workplace",
+    "label": "FAKE – development only",
+    "fields": [
+      {
+        "key": "name",
+        "label": "Name",
+        "example": "FAKE Example Name",
+        "max_length": 200
+      },
+      {
+        "key": "det",
+        "label": "Details",
+        "example": "FAKE development details",
+        "max_length": 2000
+      }
+    ],
+    "body": [
+      [
+        "",
+        "FAKE – development only"
+      ],
+      [
+        "",
+        "{name}"
+      ],
+      [
+        "",
+        "{det}"
+      ]
+    ]
+  },
+  {
+    "slug": "resignation-letter",
+    "title": "Resignation Letter",
+    "category": "Employment & workplace",
+    "label": "FAKE – development only",
+    "fields": [
+      {
+        "key": "name",
+        "label": "Name",
+        "example": "FAKE Example Name",
+        "max_length": 200
+      },
+      {
+        "key": "det",
+        "label": "Details",
+        "example": "FAKE development details",
+        "max_length": 2000
+      }
+    ],
+    "body": [
+      [
+        "",
+        "FAKE – development only"
+      ],
+      [
+        "",
+        "{name}"
+      ],
+      [
+        "",
+        "{det}"
+      ]
+    ]
+  },
+  {
+    "slug": "workplace-policy",
+    "title": "Workplace Policy",
+    "category": "Employment & workplace",
+    "label": "FAKE – development only",
+    "fields": [
+      {
+        "key": "name",
+        "label": "Name",
+        "example": "FAKE Example Name",
+        "max_length": 200
+      },
+      {
+        "key": "det",
+        "label": "Details",
+        "example": "FAKE development details",
+        "max_length": 2000
+      }
+    ],
+    "body": [
+      [
+        "",
+        "FAKE – development only"
+      ],
+      [
+        "",
+        "{name}"
+      ],
+      [
+        "",
+        "{det}"
+      ]
+    ]
+  },
+  {
+    "slug": "tenancy-agreement",
+    "title": "Tenancy Agreement",
+    "category": "Property & tenancy",
+    "label": "FAKE – development only",
+    "fields": [
+      {
+        "key": "name",
+        "label": "Name",
+        "example": "FAKE Example Name",
+        "max_length": 200
+      },
+      {
+        "key": "det",
+        "label": "Details",
+        "example": "FAKE development details",
+        "max_length": 2000
+      }
+    ],
+    "body": [
+      [
+        "",
+        "FAKE – development only"
+      ],
+      [
+        "",
+        "{name}"
+      ],
+      [
+        "",
+        "{det}"
+      ]
+    ]
+  },
+  {
+    "slug": "lease-agreement",
+    "title": "Lease Agreement",
+    "category": "Property & tenancy",
+    "label": "FAKE – development only",
+    "fields": [
+      {
+        "key": "name",
+        "label": "Name",
+        "example": "FAKE Example Name",
+        "max_length": 200
+      },
+      {
+        "key": "det",
+        "label": "Details",
+        "example": "FAKE development details",
+        "max_length": 2000
+      }
+    ],
+    "body": [
+      [
+        "",
+        "FAKE – development only"
+      ],
+      [
+        "",
+        "{name}"
+      ],
+      [
+        "",
+        "{det}"
+      ]
+    ]
+  },
+  {
+    "slug": "rent-receipt",
+    "title": "Rent Receipt",
+    "category": "Property & tenancy",
+    "label": "FAKE – development only",
+    "fields": [
+      {
+        "key": "name",
+        "label": "Name",
+        "example": "FAKE Example Name",
+        "max_length": 200
+      },
+      {
+        "key": "det",
+        "label": "Details",
+        "example": "FAKE development details",
+        "max_length": 2000
+      }
+    ],
+    "body": [
+      [
+        "",
+        "FAKE – development only"
+      ],
+      [
+        "",
+        "{name}"
+      ],
+      [
+        "",
+        "{det}"
+      ]
+    ]
+  },
+  {
+    "slug": "service-agreement",
+    "title": "Service Agreement",
+    "category": "Professional services",
+    "label": "FAKE – development only",
+    "fields": [
+      {
+        "key": "name",
+        "label": "Name",
+        "example": "FAKE Example Name",
+        "max_length": 200
+      },
+      {
+        "key": "det",
+        "label": "Details",
+        "example": "FAKE development details",
+        "max_length": 2000
+      }
+    ],
+    "body": [
+      [
+        "",
+        "FAKE – development only"
+      ],
+      [
+        "",
+        "{name}"
+      ],
+      [
+        "",
+        "{det}"
+      ]
+    ]
+  },
+  {
+    "slug": "consulting-agreement",
+    "title": "Consulting Agreement",
+    "category": "Professional services",
+    "label": "FAKE – development only",
+    "fields": [
+      {
+        "key": "name",
+        "label": "Name",
+        "example": "FAKE Example Name",
+        "max_length": 200
+      },
+      {
+        "key": "det",
+        "label": "Details",
+        "example": "FAKE development details",
+        "max_length": 2000
+      }
+    ],
+    "body": [
+      [
+        "",
+        "FAKE – development only"
+      ],
+      [
+        "",
+        "{name}"
+      ],
+      [
+        "",
+        "{det}"
+      ]
+    ]
+  },
+  {
+    "slug": "invoice",
+    "title": "Invoice",
+    "category": "Professional services",
+    "label": "FAKE – development only",
+    "fields": [
+      {
+        "key": "name",
+        "label": "Name",
+        "example": "FAKE Example Name",
+        "max_length": 200
+      },
+      {
+        "key": "det",
+        "label": "Details",
+        "example": "FAKE development details",
+        "max_length": 2000
+      }
+    ],
+    "body": [
+      [
+        "",
+        "FAKE – development only"
+      ],
+      [
+        "",
+        "{name}"
+      ],
+      [
+        "",
+        "{det}"
+      ]
+    ]
+  }
+]
