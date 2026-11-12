@@ -9,6 +9,7 @@ import Panel from "./DocPanel.jsx";
 import SupportingPanel from "./SupportingPanel.jsx";
 import Modal from "./Modal.jsx";
 import DocumentLibrary from "./DocumentLibrary.jsx";
+import SearchModal from "./SearchModal.jsx";
 
 const emptyChat = { id: null, title: "New chat", mode: "research", msgs: [], doc: null };
 const asDraft = (d) => ({ ...d, vals: d.values, tab: d.id ? "preview" : "fields", done: !!d.id, closed: false, touched: {} });
@@ -49,6 +50,7 @@ function Shell({ user, dark, setDark, onLogout }) {
   const [open, setOpen] = useState(false);
   const [menu, setMenu] = useState(false);
   const [modal, setModal] = useState(null);
+  const [searchOpen, setSearchOpen] = useState(false);
   const [toast, setToast] = useState("");
   const [busy, setBusy] = useState(false);
   const [attachments, setAttachments] = useState([]);
@@ -136,6 +138,17 @@ function Shell({ user, dark, setDark, onLogout }) {
     document.addEventListener("click", h);
     return () => document.removeEventListener("click", h);
   }, [menu]);
+  useEffect(() => {
+    const onKey = (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        setOpen(false);
+        setSearchOpen((v) => !v);
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, []);
   useEffect(() => {
     const ta = taRef.current;
     if (ta) { ta.style.height = "auto"; ta.style.height = Math.min(ta.scrollHeight, 160) + "px"; }
@@ -633,7 +646,7 @@ function Shell({ user, dark, setDark, onLogout }) {
 
   return (
     <div className="app">
-      <Sidebar {...{ min, open, setMin, setOpen, newChat, pickMode, mode, chats, cur, setCur, menu, setMenu, user, left, MENU, MORE_MENU, menuAct, onRenameChat: renameChat, onDeleteChat: deleteChat, historyCursor, loadMoreChats, loadingChats }} />
+      <Sidebar {...{ min, open, setMin, setOpen, newChat, pickMode, mode, chats, cur, setCur, menu, setMenu, user, left, MENU, MORE_MENU, menuAct, onRenameChat: renameChat, onDeleteChat: deleteChat, historyCursor, loadMoreChats, loadingChats, onOpenSearch: () => setSearchOpen(true) }} />
 
       <ChatView
         {...{
@@ -665,6 +678,15 @@ function Shell({ user, dark, setDark, onLogout }) {
         <SupportingPanel msg={activeSupportMsg} focusIndex={supportState?.focusIndex} onClose={() => setSupportState(null)} />
       ) : null}
 
+      <SearchModal
+        open={searchOpen}
+        onClose={() => setSearchOpen(false)}
+        chats={chats}
+        onSelect={(id) => {
+          setCur(id);
+          setOpen(false);
+        }}
+      />
       {modal && <Modal modal={modal} setModal={setModal} />}
       {toast && <div className="toast" role="status">{toast}</div>}
     </div>

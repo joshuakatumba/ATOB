@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 import Icon from "./Icon.jsx";
 
-function Sidebar({ min, open, setMin, setOpen, newChat, pickMode, mode, chats, cur, setCur, menu, setMenu, user, left, MENU, MORE_MENU = [], menuAct, onRenameChat, onDeleteChat, historyCursor, loadMoreChats, loadingChats = false }) {
+function Sidebar({ min, open, setMin, setOpen, newChat, pickMode, mode, chats, cur, setCur, menu, setMenu, user, left, MENU, MORE_MENU = [], menuAct, onRenameChat, onDeleteChat, historyCursor, loadMoreChats, loadingChats = false, onOpenSearch }) {
   const [chatMenuId, setChatMenuId] = useState(null);
   const [editingId, setEditingId] = useState(null);
   const [editTitle, setEditTitle] = useState("");
-  const [searchOpen, setSearchOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     if (!chatMenuId) return undefined;
@@ -15,16 +13,9 @@ function Sidebar({ min, open, setMin, setOpen, newChat, pickMode, mode, chats, c
     return () => document.removeEventListener("click", close);
   }, [chatMenuId]);
 
-  const normalizedQuery = searchQuery.trim().toLowerCase();
-  const visibleChats = chats.filter((c) => {
-    if (!c.id || c.mode !== mode) return false;
-    const hasContent = (c.title && c.title !== "New chat" && c.title !== "New draft") || (c.msgs && c.msgs.length > 0);
-    if (!hasContent) return false;
-    if (!normalizedQuery) return true;
-    const titleMatch = (c.title || "").toLowerCase().includes(normalizedQuery);
-    const msgMatch = (c.msgs || []).some((m) => (m.t || "").toLowerCase().includes(normalizedQuery));
-    return titleMatch || msgMatch;
-  });
+  const visibleChats = chats.filter(
+    (c) => c.id && c.mode === mode && ((c.title && c.title !== "New chat" && c.title !== "New draft") || (c.msgs && c.msgs.length > 0))
+  );
   const newLabel = mode === "drafting" ? "New draft" : "New chat";
 
   const commitRename = (c) => {
@@ -45,7 +36,7 @@ function Sidebar({ min, open, setMin, setOpen, newChat, pickMode, mode, chats, c
           <div className="rail">
             <button className="ic" aria-label="Open sidebar" onClick={() => setMin(false)}><Icon n="panelOpen" /></button>
             <button className="ic" aria-label={newLabel} onClick={() => newChat(mode)}><Icon n="edit" /></button>
-            <button className="ic" aria-label="Search chats" onClick={() => { setMin(false); setSearchOpen(true); }}><Icon n="search" /></button>
+            <button className="ic" aria-label="Search chats" onClick={() => onOpenSearch?.()}><Icon n="search" /></button>
             <button className="ic" aria-label="Drafting" onClick={() => pickMode("drafting")}><Icon n="draft" /></button>
             <button className="ic" aria-label="Chat history" onClick={() => setMin(false)}><Icon n="clock" /></button>
           </div>
@@ -55,15 +46,13 @@ function Sidebar({ min, open, setMin, setOpen, newChat, pickMode, mode, chats, c
               <div className="brand">Civis</div>
               <div className="brand-acts">
                 <button
-                  className={"ic" + (searchOpen ? " on" : "")}
+                  className="ic"
                   type="button"
                   aria-label="Search chats"
-                  title="Search chats"
+                  title="Search chats (Ctrl+K)"
                   onClick={() => {
-                    setSearchOpen((prev) => {
-                      if (prev) setSearchQuery("");
-                      return !prev;
-                    });
+                    if (window.innerWidth <= 760) setOpen(false);
+                    onOpenSearch?.();
                   }}
                 >
                   <Icon n="search" />
@@ -76,45 +65,13 @@ function Sidebar({ min, open, setMin, setOpen, newChat, pickMode, mode, chats, c
               <button className={"mode" + (mode === "research" ? " on" : "")} aria-pressed={mode === "research"} onClick={() => pickMode("research")}><Icon n="book" />Research</button>
               <button className={"mode" + (mode === "drafting" ? " on" : "")} aria-pressed={mode === "drafting"} onClick={() => pickMode("drafting")}><Icon n="draft" />Drafting</button>
             </div>
-            {searchOpen && (
-              <div className="chat-search">
-                <Icon n="search" />
-                <input
-                  type="search"
-                  value={searchQuery}
-                  autoFocus
-                  placeholder={mode === "drafting" ? "Search drafts\u2026" : "Search chats\u2026"}
-                  aria-label="Search chats"
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === "Escape") {
-                      setSearchQuery("");
-                      setSearchOpen(false);
-                    }
-                  }}
-                />
-                {searchQuery && (
-                  <button
-                    type="button"
-                    className="chat-search-clear"
-                    aria-label="Clear search"
-                    onClick={() => setSearchQuery("")}
-                  >
-                    <Icon n="x" />
-                  </button>
-                )}
-              </div>
-            )}
             <div className="list">
-              {loadingChats && visibleChats.length === 0 && !normalizedQuery ? (
+              {loadingChats && visibleChats.length === 0 ? (
                 <div className="skel-list" aria-hidden="true">
                   <div className="skel skel-row" />
                   <div className="skel skel-row short" />
                   <div className="skel skel-row" />
                 </div>
-              ) : null}
-              {normalizedQuery && visibleChats.length === 0 ? (
-                <p className="chat-search-empty">No matching {mode === "drafting" ? "drafts" : "chats"}.</p>
               ) : null}
               {visibleChats.map((c) => (
                 <div key={c.id} className={"chat-row" + (c.id === cur ? " on" : "")}>
