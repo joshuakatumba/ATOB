@@ -216,12 +216,18 @@ function Shell({ user, dark, setDark, onLogout }) {
     finally { historyLoading.current = false; }
   };
   const newChat = async (requested = mode) => {
+    const nextMode = typeof requested === "string" ? requested : mode;
+    if (cur && chat.id === cur && chat.mode === nextMode && chat.msgs.length === 0 && !chat.doc) {
+      setSupportState(null);
+      setOpen(false);
+      taRef.current?.focus();
+      return cur;
+    }
     if (creatingChat.current) return null;
     creatingChat.current = true;
     try {
       await flushDraft();
       setSupportState(null);
-      const nextMode = typeof requested === "string" ? requested : mode;
       const c = fromConversation(await http("/v1/conversations", { body: { mode: nextMode } }));
       setChats((cs) => [c, ...cs.filter((old) => old.id)]);
       selectedChat.current = c.id;

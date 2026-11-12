@@ -26,7 +26,7 @@ function SupportingPanel({ msg, focusIndex, onClose }) {
           </button>
         </div>
         <h2>Supporting Content</h2>
-        <button className="ic" type="button" aria-label="Close supporting content" onClick={onClose}>
+        <button className="ic sup-close" type="button" aria-label="Close supporting content" onClick={onClose}>
           <Icon n="x" />
         </button>
       </div>

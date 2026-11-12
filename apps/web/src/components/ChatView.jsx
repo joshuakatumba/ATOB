@@ -27,7 +27,7 @@ function ChatView({ setOpen, open, scrollRef, tplView, pickTemplate, say, chat, 
           <button className="ic" type="button" aria-label="Open sidebar" onClick={() => setOpen(!open)}><Icon n="bars" /></button>
           <div className="top-title">
             <strong className="top-brand">Civis</strong>
-            <span className="top-sub">{chat?.title || (mode === "drafting" ? "Drafting" : "Research")}</span>
+            <span className="top-sub">{chat?.title && chat.title !== "New chat" ? chat.title : (mode === "drafting" ? "Drafting" : "Research")}</span>
           </div>
           {chat?.doc && (
             <button
@@ -55,8 +55,27 @@ function ChatView({ setOpen, open, scrollRef, tplView, pickTemplate, say, chat, 
               : chat.msgs.length === 0 ? (
                 <div className="hero">
                   <AdvocateIllustration />
-                  <h1>What would you like to research?</h1>
-                  <div className="ideas">{IDEAS.research.map((i) => <button key={i} className="idea" onClick={() => { setInput(i); taRef.current?.focus(); }}>{i}</button>)}</div>
+                  <h1>{mode === "drafting" ? "Where should we begin drafting?" : "Where should we begin?"}</h1>
+                  <div className="ideas">
+                    {(IDEAS[mode] || IDEAS.research).map((item, idx) => {
+                      const text = typeof item === "string" ? item : item.text;
+                      const icon = typeof item === "string" ? "doc" : item.icon;
+                      return (
+                        <button
+                          key={idx}
+                          type="button"
+                          className="idea"
+                          onClick={() => {
+                            setInput(text);
+                            taRef.current?.focus();
+                          }}
+                        >
+                          <span className="idea-icon"><Icon n={icon} /></span>
+                          <span className="idea-text">{text}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
                 </div>
               ) : (
                 <>

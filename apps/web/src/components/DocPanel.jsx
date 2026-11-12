@@ -3,8 +3,14 @@ import Icon from "./Icon.jsx";
 function Panel({ doc, setDoc, onGenerate, onClose }) {
   return (
     <aside className="panel">
-      <div className="ph">
-        <h2>{doc.name}</h2>
+      <div className="ph doc-ph">
+        <div className="doc-ph-top">
+          <h2>{doc.name}</h2>
+          <div className="doc-ph-icons">
+            {doc.done && <button className="ic" type="button" aria-label="Download" onClick={() => downloadDoc(doc)}><Icon n="down" /></button>}
+            <button className="ic" type="button" aria-label="Close" onClick={onClose}><Icon n="x" /></button>
+          </div>
+        </div>
         <div className="ph-acts">
           <div className="seg">
             {["fields", "preview"].map((t) => (
@@ -12,8 +18,6 @@ function Panel({ doc, setDoc, onGenerate, onClose }) {
             ))}
           </div>
           <button className="gen" type="button" onClick={onGenerate}>Generate</button>
-          {doc.done && <button className="ic" type="button" aria-label="Download" onClick={() => downloadDoc(doc)}><Icon n="down" /></button>}
-          <button className="ic" type="button" aria-label="Close" onClick={onClose}><Icon n="x" /></button>
         </div>
       </div>
       <div className="pb">

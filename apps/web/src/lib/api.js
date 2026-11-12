@@ -1,6 +1,15 @@
 import { http, ApiError } from "./http.js";
 const IDEAS = {
-  research: ["What are my rights if I am dismissed without notice?", "Explain the main clauses in an NDA", "How long do I have to file a claim for unpaid wages?", "Trademark or copyright for my brand name?"],
+  research: [
+    { icon: "book", text: "Rights on dismissal without notice" },
+    { icon: "doc", text: "Key clauses in a commercial NDA" },
+    { icon: "shield", text: "Trademark vs copyright protection" },
+  ],
+  drafting: [
+    { icon: "doc", text: "Draft a commercial office lease" },
+    { icon: "draft", text: "Employment contract with NDA" },
+    { icon: "shield", text: "General power of attorney" },
+  ],
 };
 /* SEAM: replace with POST /v1/conversations/{id}/messages (streaming). */
 async function askCivis({ id, mode, content, attachmentIds = [], onEvent, signal }) {
