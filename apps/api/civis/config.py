@@ -54,10 +54,14 @@ class Settings(BaseModel):
     support_email: str | None = None
     trusted_proxy_hops: int = Field(default=0, ge=0, le=5)
     global_hourly_model_requests: int = Field(default=600, ge=10, le=100000)
-    payment_provider: Literal["disabled", "flutterwave"] = "disabled"
+    payment_provider: Literal["disabled", "flutterwave", "pesapal"] = "disabled"
     flutterwave_secret_key: SecretStr | None = None
     flutterwave_webhook_secret: SecretStr | None = None
     flutterwave_base_url: str = "https://api.flutterwave.com/v3"
+    pesapal_consumer_key: SecretStr | None = None
+    pesapal_consumer_secret: SecretStr | None = None
+    pesapal_base_url: str = "https://pay.pesapal.com/v3"
+    pesapal_ipn_id: str | None = None
     clamav_host: str | None = None
     clamav_port: int = 3310
     google_client_id: str | None = None
@@ -136,6 +140,12 @@ class Settings(BaseModel):
         data["flutterwave_base_url"] = env.get(
             "FLUTTERWAVE_BASE_URL", "https://api.flutterwave.com/v3"
         )
+        data["pesapal_consumer_key"] = (env.get("PESAPAL_CONSUMER_KEY") or "").strip() or None
+        data["pesapal_consumer_secret"] = (
+            env.get("PESAPAL_CONSUMER_SECRET") or ""
+        ).strip() or None
+        data["pesapal_base_url"] = env.get("PESAPAL_BASE_URL", "https://pay.pesapal.com/v3")
+        data["pesapal_ipn_id"] = (env.get("PESAPAL_IPN_ID") or "").strip() or None
         data["clamav_host"] = env.get("CLAMAV_HOST") or None
         data["clamav_port"] = env.get("CLAMAV_PORT", "3310")
         data["google_client_id"] = (env.get("GOOGLE_CLIENT_ID") or "").strip() or None
@@ -162,6 +172,12 @@ class Settings(BaseModel):
             not settings.flutterwave_secret_key or not settings.flutterwave_webhook_secret
         ):
             raise ValueError("Missing Flutterwave payment configuration")
+        if settings.payment_provider == "pesapal" and (
+            not settings.pesapal_consumer_key
+            or not settings.pesapal_consumer_secret
+            or not settings.pesapal_base_url.startswith("https://")
+        ):
+            raise ValueError("Missing Pesapal payment configuration")
         if production and settings.llm_provider == "fake":
             raise ValueError("Fake provider prohibited in production")
         if production and not settings.require_email_verification:

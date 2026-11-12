@@ -280,22 +280,26 @@ function Shell({ user, dark, setDark, onLogout }) {
       const plans = catalog.items || [];
       let chosen = plans.find((p) => p.name === "Pro")?.id || plans[0]?.id;
       setModal({
-        title: "Civis Plans (UGX)",
+        title: "Subscribe",
         body: (
-          <div>
-            <p>Pay with MTN Mobile Money, Airtel Money or Card. Unused prompts roll over while your 30-day plan is active.</p>
+          <div className="plan-list">
+            <p className="plan-sub">Choose a 30-day plan (MTN, Airtel Money or Card).</p>
             {plans.map((p) => (
-              <label key={p.id} className="fld" style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 8 }}>
+              <label key={p.id} className="plan-card">
                 <input type="radio" name="civis-plan" defaultChecked={p.id === chosen} onChange={() => { chosen = p.id; }} />
-                <span><strong>Civis {p.name}</strong> — UGX {p.price_ugx.toLocaleString()} ({p.prompts} prompts / {p.duration_days} days)</span>
+                <div className="plan-info">
+                  <b>{p.name}</b>
+                  <span>{p.prompts} prompts</span>
+                </div>
+                <strong className="plan-price">UGX {p.price_ugx.toLocaleString()}</strong>
               </label>
             ))}
           </div>
         ),
         actions: [
-          { label: "Not now" },
+          { label: "Cancel" },
           {
-            label: "Continue to payment", pri: true, fn: async () => {
+            label: "Continue", pri: true, fn: async () => {
               if (!chosen) return;
               try {
                 const res = await http("/v1/billing/checkout", { body: { plan_id: chosen } });
@@ -413,10 +417,28 @@ function Shell({ user, dark, setDark, onLogout }) {
     } catch (error) { say(error.message); }
     finally { feedbackPending.current.delete(identifier); }
   };
-  const onCopy = (txt) => {
+  const copyText = (txt, okMsg = "Copied to clipboard", errMsg = "Could not copy text") => {
     if (!txt) return;
-    navigator.clipboard?.writeText(txt).then(() => say("Copied to clipboard"), () => say("Could not copy text"));
+    if (navigator.clipboard?.writeText) {
+      navigator.clipboard.writeText(txt).then(() => say(okMsg), () => say(errMsg));
+      return;
+    }
+    try {
+      const ta = document.createElement("textarea");
+      ta.value = txt;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      const ok = document.execCommand("copy");
+      ta.remove();
+      say(ok ? okMsg : errMsg);
+    } catch {
+      say(errMsg);
+    }
   };
+  const onCopy = (txt) => copyText(txt, "Copied to clipboard", "Could not copy text");
   const onOpenSupport = (msg, focusIdx = null) => {
     setSupportState((prev) => {
       const sameMsg = prev && ((prev.msg?.id && prev.msg.id === msg.id) || prev.msg === msg);
@@ -559,7 +581,7 @@ function Shell({ user, dark, setDark, onLogout }) {
     exportAcct: exportAccount,
     delAcct: deleteAccount,
     sub: showSub,
-    inv: () => setModal({ title: "Invite friends", body: (<><p>Share this link with anyone who could use Civis.</p><div className="link">{window.location.href}</div></>), actions: [{ label: "Close" }, { label: "Copy link", pri: true, fn: () => { navigator.clipboard?.writeText(window.location.href).then(() => say("Link copied"), () => say("Copy the link above")); } }] }),
+    inv: () => setModal({ title: "Invite friends", body: (<><p>Share this link with anyone who could use Civis.</p><div className="link">{window.location.href}</div></>), actions: [{ label: "Close" }, { label: "Copy link", pri: true, fn: () => copyText(window.location.href, "Link copied", "Copy the link above") }] }),
     fb: () => { let v = ""; setModal({ title: "Feedback & support", body: (<><p>Tell us what went wrong or what you would like Civis to do.</p><textarea placeholder="Write your message" onChange={(e) => { v = e.target.value; }} /></>), actions: [{ label: "Cancel" }, { label: "Send", pri: true, fn: async () => { if (v.trim()) { try { await http("/v1/feedback", { body: { category: "feedback", message: v.trim(), conversation_id: cur } }); say("Thanks, your message was sent"); } catch (e) { say(e.message); } } } }] }); },
     ins: () => setModal({ title: "Install app", body: <p>Open your browser menu and choose Install app or Add to Home Screen.</p>, actions: [{ label: "Got it", pri: true }] }),
     dark: () => setDark(!dark).catch((e) => say(e.message)),

@@ -229,8 +229,8 @@ const Msg = ({ m, hideMark, openDoc, chat, onFeedback, onCopy, onOpenSupport, su
                   </span>
                   {m.r === "a" && !m.document_id && m.id && m.status === "complete" && (
                     <div className="rate-row" aria-label="Rate response">
-                      <button className="ic" type="button" aria-label="Helpful response" aria-pressed={m.rating === 1} onClick={() => onFeedback(m.id, 1)}>👍</button>
-                      <button className="ic" type="button" aria-label="Unhelpful response" aria-pressed={m.rating === -1} onClick={() => onFeedback(m.id, -1)}>👎</button>
+                      <button className="ic" type="button" aria-label="Helpful response" aria-pressed={m.rating === 1} onClick={() => onFeedback(m.id, 1)}><Icon n="thumbUp" /></button>
+                      <button className="ic" type="button" aria-label="Unhelpful response" aria-pressed={m.rating === -1} onClick={() => onFeedback(m.id, -1)}><Icon n="thumbDown" /></button>
                     </div>
                   )}
                 </div>

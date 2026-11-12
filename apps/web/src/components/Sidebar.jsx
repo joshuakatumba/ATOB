@@ -13,9 +13,8 @@ function Sidebar({ min, open, setMin, setOpen, newChat, pickMode, mode, chats, c
     return () => document.removeEventListener("click", close);
   }, [chatMenuId]);
 
-  const modeChats = chats.filter((c) => c.id && c.mode === mode);
+  const visibleChats = chats.filter((c) => c.id && c.mode === mode);
   const newLabel = mode === "drafting" ? "New draft" : "New chat";
-  const visibleChats = modeChats.length ? modeChats : [{ id: null, title: newLabel, mode, msgs: [] }];
 
   const commitRename = (c) => {
     const trimmed = editTitle.trim();
@@ -44,15 +43,15 @@ function Sidebar({ min, open, setMin, setOpen, newChat, pickMode, mode, chats, c
               <div className="brand">Civis</div>
               <button className="ic" style={{ marginTop: -8 }} aria-label="Close sidebar" onClick={() => (window.innerWidth <= 760 ? setOpen(false) : setMin(true))}><Icon n="panelClose" /></button>
             </div>
-            <button className="new" onClick={() => newChat(mode)}>＋ {newLabel}</button>
+            <button className="new" onClick={() => newChat(mode)}><Icon n="plus" /> {newLabel}</button>
             <div className="modes" role="group" aria-label="Mode">
               <button className={"mode" + (mode === "research" ? " on" : "")} aria-pressed={mode === "research"} onClick={() => pickMode("research")}><Icon n="book" />Research</button>
               <button className={"mode" + (mode === "drafting" ? " on" : "")} aria-pressed={mode === "drafting"} onClick={() => pickMode("drafting")}><Icon n="draft" />Drafting</button>
             </div>
             <div className="list">
               {visibleChats.map((c) => (
-                <div key={c.id || "empty"} className={"chat-row" + (c.id === cur ? " on" : "")}>
-                  {editingId === c.id ? (
+                <div key={c.id} className={"chat-row" + (c.id === cur ? " on" : "")}>
+                  {Boolean(c.id && editingId === c.id) ? (
                     <input
                       className="chat-edit"
                       value={editTitle}
@@ -83,7 +82,7 @@ function Sidebar({ min, open, setMin, setOpen, newChat, pickMode, mode, chats, c
                         aria-label={`Options for ${c.title}`}
                         onClick={() => setChatMenuId((prev) => (prev === c.id ? null : c.id))}
                       >
-                        ⋯
+                        <Icon n="more" />
                       </button>
                       {chatMenuId === c.id && (
                         <div className="chat-pop" role="menu">

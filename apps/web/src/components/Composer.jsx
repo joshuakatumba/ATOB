@@ -41,7 +41,7 @@ function Composer({ tplView, mic, taRef, input, setInput, send, mode, showSub, b
             <div className="vr">
               <div className="wv">{Array.from({ length: 28 }, (_, i) => <i key={i} ref={(el) => { mic.bars.current[i] = el; }} />)}</div>
               <button className="ic" type="button" aria-label="Cancel" disabled={mic.busy} onClick={() => mic.stop(false)}><Icon n="x" /></button>
-              <button className="send" type="button" aria-label="Transcribe audio" disabled={mic.busy} onClick={() => mic.stop(true)}>{mic.busy ? "\u2026" : "\u2713"}</button>
+              <button className="send" type="button" aria-label="Transcribe audio" disabled={mic.busy} onClick={() => mic.stop(true)}>{mic.busy ? "\u2026" : <Icon n="check" />}</button>
             </div>
           </div>
         ) : (
@@ -142,7 +142,7 @@ function Composer({ tplView, mic, taRef, input, setInput, send, mode, showSub, b
               <button className="ic" type="button" title="Voice input" aria-label="Voice input" onClick={() => mic.start()}><Icon n="mic" /></button>
               <span className="sp" />
               <button className="subl" type="button" onClick={showSub}><Icon n="info" />Subscribe</button>
-              <button className="send" type="button" aria-label={busy ? "Stop response" : "Send"} disabled={!canSend} onClick={busy ? stop : send}>{busy ? "■" : "↑"}</button>
+              <button className="send" type="button" aria-label={busy ? "Stop response" : "Send"} disabled={!canSend} onClick={busy ? stop : send}><Icon n={busy ? "stop" : "arrowUp"} /></button>
             </div>
           </>
         )}

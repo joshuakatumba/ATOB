@@ -42,6 +42,21 @@ export async function authenticate(mode, { email, pw, name }) {
   return http("/v1/me");
 }
 
+function randomState() {
+  if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
+    return crypto.randomUUID();
+  }
+  if (typeof crypto !== "undefined" && typeof crypto.getRandomValues === "function") {
+    const bytes = new Uint8Array(16);
+    crypto.getRandomValues(bytes);
+    bytes[6] = (bytes[6] & 0x0f) | 0x40;
+    bytes[8] = (bytes[8] & 0x3f) | 0x80;
+    const hex = Array.from(bytes, (b) => b.toString(16).padStart(2, "0")).join("");
+    return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
+  }
+  return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 12)}`;
+}
+
 export async function startGoogleAuth() {
   const redirectURI = `${window.location.origin}/auth/callback/google`;
   let data;
@@ -57,7 +72,7 @@ export async function startGoogleAuth() {
   if (data?.status !== "OK" || !data.urlWithQueryParams) {
     throw new Error("Google sign-in is not configured yet.");
   }
-  const state = crypto.randomUUID();
+  const state = randomState();
   try {
     sessionStorage.setItem("civis-oauth-state", state);
     if (data.pkceCodeVerifier) sessionStorage.setItem("civis-oauth-pkce", data.pkceCodeVerifier);
