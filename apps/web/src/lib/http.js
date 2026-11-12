@@ -79,6 +79,11 @@ export async function startGoogleAuth() {
     else sessionStorage.removeItem("civis-oauth-pkce");
   } catch { /* Storage may be unavailable. */ }
   const url = new URL(data.urlWithQueryParams);
+  if (url.searchParams.has("included_grant_scopes")) {
+    const val = url.searchParams.get("included_grant_scopes");
+    url.searchParams.delete("included_grant_scopes");
+    url.searchParams.set("include_granted_scopes", val);
+  }
   url.searchParams.set("state", state);
   window.location.assign(url.toString());
 }
