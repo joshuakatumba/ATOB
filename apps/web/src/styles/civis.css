@@ -290,3 +290,27 @@ a.sup-link:hover{text-decoration:underline}
   .file-acts{width:100%;justify-content:flex-end}
 }
 @media(prefers-reduced-motion:reduce){.cv *{animation:none!important;transition:none!important}}
+.hero-law{width:104px;height:104px;margin-bottom:-6px}
+.msg.a.thinking{display:flex;align-items:center;gap:12px}
+.msg.a.thinking .dots{display:inline-flex;align-items:center;gap:5px;height:28px}
+.msg.a.thinking .dots span{margin:0}
+.send .i{width:17px;height:17px;stroke-width:2}
+.new .i{width:16px;height:16px}
+.chat-dots .i{width:17px;height:17px}
+.rate-row .ic .i{width:16px;height:16px}
+.rate-row .ic[aria-pressed="true"]{color:var(--accent);background:var(--hover)}
+.add-pop{min-width:190px}
+.add-pop .it{font-size:13px;padding:7px 9px;gap:9px}
+.add-pop .it .i{width:16px;height:16px}
+.add-hd{font-size:11.5px;padding:5px 9px 3px}
+.dlg-hd{margin-bottom:10px}
+.plan-list{display:flex;flex-direction:column;gap:8px}
+.plan-sub{margin:0 0 6px!important;font-size:14px!important;color:var(--mute)!important}
+.plan-card{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--card);cursor:pointer;transition:border-color .15s,background .15s}
+.plan-card:hover{background:var(--hover)}
+.plan-card:has(input:checked){border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.plan-card input{accent-color:var(--accent);margin:0;flex:none}
+.plan-info{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.3}
+.plan-info b{font-weight:600;font-size:15px}
+.plan-info span{font-size:13px;color:var(--mute)}
+.plan-price{font-size:14px;font-weight:600;white-space:nowrap}

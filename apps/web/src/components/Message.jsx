@@ -35,7 +35,23 @@ function renderInline(text, m, onOpenSupport) {
   });
 }
 
-function renderFormattedProse(text, m, onOpenSupport) {
+const EMOJI_RE = /[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE0F}\u{200D}]/gu;
+export function cleanProse(text) {
+  return String(text || "")
+    .replace(EMOJI_RE, "")
+    .replace(/^\s*([-*_]\s*){3,}$/gm, "")
+    .replace(/\s+[\u2014\u2013]\s+/g, ". ")
+    .replace(/[\u2014\u2013]/g, ", ")
+    .replace(/(\S)\s+--+\s+/g, "$1. ")
+    .replace(/--+/g, "")
+    .replace(/^(\s*(?:\d+\.\s+)?)[,;]+\s*/gm, "$1")
+    .replace(/\s+([,;.:])/g, "$1")
+    .replace(/,\s*,+/g, ",")
+    .replace(/[ \t]{2,}/g, " ");
+}
+
+function renderFormattedProse(rawText, m, onOpenSupport) {
+  const text = cleanProse(rawText);
   if (!text) return null;
   const blocks = text.split(/\n{2,}/).map((b) => b.trim()).filter(Boolean);
   return blocks.map((block, bIdx) => {

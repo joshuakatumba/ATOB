@@ -177,6 +177,18 @@ function Shell({ user, dark, setDark, onLogout }) {
     })().catch((e) => { if (load === loadingChat.current) say(e.message); });
   };
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const tracking = params.get("OrderTrackingId");
+    if (!tracking) return;
+    window.history.replaceState(null, "", "/");
+    http("/v1/billing/confirm", { body: { order_tracking_id: tracking } })
+      .then((r) => {
+        if (typeof r?.prompts_left === "number") setLeft(r.prompts_left);
+        say(r?.status === "completed" || r?.status === "already_processed" ? "Payment received. Your plan is active." : r?.status === "failed" ? "Payment was not completed." : "Payment is processing. Your prompts will appear shortly.");
+      })
+      .catch((e) => say(e.message));
+  }, []);
+  useEffect(() => {
     let live = true;
     (async () => {
       const page = await http("/v1/conversations?limit=30");

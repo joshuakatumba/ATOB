@@ -182,7 +182,7 @@ def install_drafting(
                         )
                         notice = (
                             f"I've opened the **{template['title']}** template on the right. "
-                            f"Tell me the details you'd like to use — such as {sample_labels} — "
+                            f"Tell me the details you'd like to use, such as {sample_labels}, "
                             "and I'll fill them in for you, or edit the fields directly and click "
                             "**Generate**."
                         )
@@ -222,13 +222,13 @@ def install_drafting(
                             + ", or click **Generate** whenever you're ready."
                             if remaining
                             else (
-                                " Everything is filled in — click **Generate** "
+                                " Everything is filled in. Click **Generate** "
                                 "whenever you're ready "
                                 "to download your document."
                             )
                         )
                         variants = [
-                            f"Done — I've set **{label}** to **{val}** in your "
+                            f"Done. I've set **{label}** to **{val}** in your "
                             f"**{template['title']}** draft.{next_hint}",
                             f"Updated **{label}** to **{val}** in the preview on the right."
                             f"{next_hint}",
@@ -510,9 +510,9 @@ def install_drafting(
                                 "cid": body.conversation_id,
                                 "description": body.description,
                                 "notice": (
-                                    "Tell me what kind of document you'd like to prepare — "
+                                    "Tell me what kind of document you'd like to prepare, "
                                     "such as a Lease Agreement, Affidavit, Employment Contract, "
-                                    "or Power of Attorney — or pick a template from the catalog."
+                                    "or Power of Attorney, or pick a template from the catalog."
                                 ),
                             },
                         )

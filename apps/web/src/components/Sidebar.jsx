@@ -124,7 +124,7 @@ function Sidebar({ min, open, setMin, setOpen, newChat, pickMode, mode, chats, c
                 <div className="pop" role="menu">
                   {menu === "more" ? (
                     <>
-                      <button type="button" className="it" onClick={() => setMenu(true)} style={{ fontWeight: 600, color: "var(--mute)" }}>← More</button>
+                      <button type="button" className="it" onClick={() => setMenu(true)} style={{ fontWeight: 600, color: "var(--mute)" }}>More</button>
                       <div className="sep" />
                       {MORE_MENU.map((it, i) => it === "-" ? <div className="sep" key={i} /> : (
                         <button key={it[0]} className="it" role="menuitem" onClick={() => { setMenu(false); menuAct[it[0]](); }}><Icon n={it[1]} />{it[2]}</button>
