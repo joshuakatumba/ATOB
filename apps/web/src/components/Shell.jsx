@@ -188,10 +188,11 @@ function Shell({ user, dark, setDark, onLogout }) {
       })
       .catch((e) => say(e.message));
   }, []);
+  const [loadingChats, setLoadingChats] = useState(true);
   useEffect(() => {
     let live = true;
     (async () => {
-      const page = await http("/v1/conversations?limit=30");
+      const page = await http("/v1/conversations?limit=30").finally(() => { if (live) setLoadingChats(false); });
       if (!live) return;
       setHistoryCursor(page.next_cursor);
       const items = page.items;
@@ -400,7 +401,7 @@ function Shell({ user, dark, setDark, onLogout }) {
           }
           if (event === "citations") upd(id, (c) => ({ ...c, msgs: c.msgs.map((m) => m.streaming ? { ...m, citations: data } : m) }));
           if (event === "delta") upd(id, (c) => ({ ...c, msgs: c.msgs.map((m) => m.streaming ? { ...m, t: m.t + data.text } : m) }));
-          if (event === "done") upd(id, (c) => ({ ...c, msgs: c.msgs.map((m) => m.streaming ? { ...m, input_tokens: data.input_tokens, output_tokens: data.output_tokens } : m) }));
+          if (event === "done") upd(id, (c) => ({ ...c, msgs: c.msgs.map((m) => m.streaming ? { ...m, streaming: false, input_tokens: data.input_tokens, output_tokens: data.output_tokens } : m) }));
         }
       });
     } catch (e) {
@@ -429,26 +430,37 @@ function Shell({ user, dark, setDark, onLogout }) {
     } catch (error) { say(error.message); }
     finally { feedbackPending.current.delete(identifier); }
   };
-  const copyText = (txt, okMsg = "Copied to clipboard", errMsg = "Could not copy text") => {
+  const copyText = async (txt, okMsg = "Copied to clipboard", errMsg = "Could not copy text") => {
     if (!txt) return;
+    let success = false;
     if (navigator.clipboard?.writeText) {
-      navigator.clipboard.writeText(txt).then(() => say(okMsg), () => say(errMsg));
-      return;
+      try {
+        await navigator.clipboard.writeText(txt);
+        success = true;
+      } catch {
+        success = false;
+      }
     }
-    try {
-      const ta = document.createElement("textarea");
-      ta.value = txt;
-      ta.style.position = "fixed";
-      ta.style.opacity = "0";
-      document.body.appendChild(ta);
-      ta.focus();
-      ta.select();
-      const ok = document.execCommand("copy");
-      ta.remove();
-      say(ok ? okMsg : errMsg);
-    } catch {
-      say(errMsg);
+    if (!success) {
+      try {
+        const ta = document.createElement("textarea");
+        ta.value = txt;
+        ta.setAttribute("readonly", "");
+        ta.style.position = "fixed";
+        ta.style.left = "-9999px";
+        ta.style.top = "-9999px";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        ta.setSelectionRange(0, txt.length);
+        success = document.execCommand("copy");
+        ta.remove();
+      } catch {
+        success = false;
+      }
     }
+    say(success ? okMsg : errMsg);
   };
   const onCopy = (txt) => copyText(txt, "Copied to clipboard", "Could not copy text");
   const onOpenSupport = (msg, focusIdx = null) => {
@@ -615,7 +627,7 @@ function Shell({ user, dark, setDark, onLogout }) {
 
   return (
     <div className="app">
-      <Sidebar {...{ min, open, setMin, setOpen, newChat, pickMode, mode, chats, cur, setCur, menu, setMenu, user, left, MENU, MORE_MENU, menuAct, onRenameChat: renameChat, onDeleteChat: deleteChat, historyCursor, loadMoreChats }} />
+      <Sidebar {...{ min, open, setMin, setOpen, newChat, pickMode, mode, chats, cur, setCur, menu, setMenu, user, left, MENU, MORE_MENU, menuAct, onRenameChat: renameChat, onDeleteChat: deleteChat, historyCursor, loadMoreChats, loadingChats }} />
 
       <ChatView
         {...{

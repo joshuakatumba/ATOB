@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Icon from "./Icon.jsx";
 
-function Sidebar({ min, open, setMin, setOpen, newChat, pickMode, mode, chats, cur, setCur, menu, setMenu, user, left, MENU, MORE_MENU = [], menuAct, onRenameChat, onDeleteChat, historyCursor, loadMoreChats }) {
+function Sidebar({ min, open, setMin, setOpen, newChat, pickMode, mode, chats, cur, setCur, menu, setMenu, user, left, MENU, MORE_MENU = [], menuAct, onRenameChat, onDeleteChat, historyCursor, loadMoreChats, loadingChats = false }) {
   const [chatMenuId, setChatMenuId] = useState(null);
   const [editingId, setEditingId] = useState(null);
   const [editTitle, setEditTitle] = useState("");
@@ -49,6 +49,13 @@ function Sidebar({ min, open, setMin, setOpen, newChat, pickMode, mode, chats, c
               <button className={"mode" + (mode === "drafting" ? " on" : "")} aria-pressed={mode === "drafting"} onClick={() => pickMode("drafting")}><Icon n="draft" />Drafting</button>
             </div>
             <div className="list">
+              {loadingChats && visibleChats.length === 0 ? (
+                <div className="skel-list" aria-hidden="true">
+                  <div className="skel skel-row" />
+                  <div className="skel skel-row short" />
+                  <div className="skel skel-row" />
+                </div>
+              ) : null}
               {visibleChats.map((c) => (
                 <div key={c.id} className={"chat-row" + (c.id === cur ? " on" : "")}>
                   {Boolean(c.id && editingId === c.id) ? (
@@ -137,7 +144,6 @@ function Sidebar({ min, open, setMin, setOpen, newChat, pickMode, mode, chats, c
                         <button key={it[0]} className="it" role="menuitem" onClick={() => { if (it[0] === "more") setMenu("more"); else { setMenu(false); menuAct[it[0]](); } }}>
                           <Icon n={it[1]} />
                           <span style={{ flex: 1 }}>{it[2]}</span>
-                          {it[0] === "more" && <span style={{ color: "var(--mute)" }}>›</span>}
                         </button>
                       ))}
                     </>

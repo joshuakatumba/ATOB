@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Icon from "./Icon.jsx";
 import { slug, downloadDoc } from "../lib/doc.js";
 
@@ -158,6 +159,7 @@ function formatStamp(createdAt) {
 }
 
 const Msg = ({ m, hideMark, openDoc, chat, onFeedback, onCopy, onOpenSupport, supportActive }) => {
+  const [copied, setCopied] = useState(false);
   if (m.streaming && !m.t) return null;
   if (m.r === "u") return <div className="msg u"><div className="b">{m.t}</div></div>;
   const fileTitle = m.file_title || m.t;
@@ -174,8 +176,15 @@ const Msg = ({ m, hideMark, openDoc, chat, onFeedback, onCopy, onOpenSupport, su
   const stamp = formatStamp(m.created_at);
   const showActions = m.r === "a" && Boolean(m.t);
 
+  const handleCopy = () => {
+    if (!m.t) return;
+    onCopy?.(m.t);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
-    <div className="msg a">
+    <div className={"msg a" + (m.streaming ? " is-streaming" : "")}>
       <div className="msg-col">
         <div className="msg-top">
           {hideMark ? <div className="mk" style={{ visibility: "hidden" }} aria-hidden="true">C</div> : <div className="mk">C</div>}
@@ -184,21 +193,21 @@ const Msg = ({ m, hideMark, openDoc, chat, onFeedback, onCopy, onOpenSupport, su
             <div className="msg-acts">
               <button
                 type="button"
-                className="msg-act"
-                title="Copy response"
-                aria-label="Copy response"
-                onClick={() => onCopy?.(m.t)}
+                className={"msg-act" + (copied ? " on copied" : "")}
+                title={copied ? "Copied!" : "Copy response"}
+                aria-label={copied ? "Copied!" : "Copy response"}
+                onClick={handleCopy}
               >
-                <Icon n="copy" />
+                <Icon n={copied ? "check" : "copy"} />
               </button>
               <button
                 type="button"
                 className={"msg-act" + (supportActive ? " on" : "")}
-                title="Show supporting content"
-                aria-label="Show supporting content"
+                title={supportActive ? "Close supporting content" : "Open supporting content"}
+                aria-label={supportActive ? "Close supporting content" : "Open supporting content"}
                 onClick={() => onOpenSupport?.(m, null)}
               >
-                <Icon n="support" />
+                <Icon n="list" />
               </button>
             </div>
           )}
@@ -210,7 +219,12 @@ const Msg = ({ m, hideMark, openDoc, chat, onFeedback, onCopy, onOpenSupport, su
             <>
               <div className="res-prose">
                 {m.t
-                  ? renderFormattedProse(m.t, m, onOpenSupport)
+                  ? (
+                    <>
+                      {renderFormattedProse(m.t, m, onOpenSupport)}
+                      {m.streaming && <span className="streaming-cursor" aria-hidden="true" />}
+                    </>
+                  )
                   : m.status === "incomplete"
                     ? <p className="res-p">Response unavailable.</p>
                     : null}

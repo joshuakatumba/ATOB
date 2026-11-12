@@ -15,8 +15,15 @@ function SupportingPanel({ msg, focusIndex, onClose }) {
     <aside className="panel sup-panel" aria-label="Supporting Content">
       <div className="ph sup-ph">
         <div className="sup-tabs">
-          <span className="sup-tab on"><Icon n="list" /></span>
-          <span className="sup-tab"><Icon n="support" /></span>
+          <button
+            type="button"
+            className="sup-tab on ic-tab"
+            onClick={onClose}
+            title="Close supporting content"
+            aria-label="Close supporting content"
+          >
+            <Icon n="list" />
+          </button>
         </div>
         <h2>Supporting Content</h2>
         <button className="ic" type="button" aria-label="Close supporting content" onClick={onClose}>

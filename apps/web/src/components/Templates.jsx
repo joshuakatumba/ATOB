@@ -57,9 +57,24 @@ function Templates({ onPick, onError }) {
           </button>
         ))}
         {!list.length && (
-          <p className="none" role={loading ? "status" : undefined}>
-            {loading ? "Loading templates\u2026" : cat || q ? "No templates match your search." : "Choose a category to see its templates."}
-          </p>
+          loading ? (
+            <>
+              {Array.from({ length: 6 }, (_, idx) => (
+                <div key={idx} className="tc skel-card" aria-hidden="true">
+                  <div className="skel skel-ic" />
+                  <div className="skel-lines">
+                    <div className="skel skel-line" />
+                    <div className="skel skel-line short" />
+                  </div>
+                </div>
+              ))}
+              <p className="none" role="status">Loading templates…</p>
+            </>
+          ) : (
+            <p className="none">
+              {cat || q ? "No templates match your search." : "Choose a category to see its templates."}
+            </p>
+          )
         )}
         {count > 9 && !all && <button className="more" onClick={() => setAll(true)}>Show all {count}</button>}
       </div>

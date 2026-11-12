@@ -31,7 +31,12 @@ export default function DocumentLibrary({ onOpen }) {
   };
   return <div>
     {error && <p role="alert">{error}</p>}
-    {loading && <p role="status">Loading documents…</p>}
+    {loading && (
+      <div className="skel-list" role="status" aria-label="Loading documents">
+        <div className="skel skel-doc" />
+        <div className="skel skel-doc" />
+      </div>
+    )}
     {!loading && !page.items.length && !error && <p>No documents yet.</p>}
     {page.items.map((item) => <div className="file lib-file" key={item.id}>
       <div className="fm"><b>{item.name}</b><i>{new Date(item.created_at).toLocaleDateString()}</i></div>
