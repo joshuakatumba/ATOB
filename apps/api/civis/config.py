@@ -51,6 +51,12 @@ class Settings(BaseModel):
     laws_africa_base_url: str = "https://api.laws.africa/ai/v1"
     retrieval_top_k: int = Field(default=3, ge=1, le=10)
     retrieval_max_chars: int = Field(default=12000, ge=6000, le=48000)
+    research_allow_partial: bool = False
+    fallback_llm_provider: Literal["", "anthropic", "groq"] = ""
+    fallback_llm_model: str | None = None
+    fallback_llm_api_key: SecretStr | None = None
+    fallback_llm_base_url: str | None = None
+    ocr_vision_model: str = "meta-llama/llama-4-scout-17b-16e-instruct"
     support_email: str | None = None
     trusted_proxy_hops: int = Field(default=0, ge=0, le=5)
     global_hourly_model_requests: int = Field(default=600, ge=10, le=100000)
@@ -150,6 +156,17 @@ class Settings(BaseModel):
         data["clamav_port"] = env.get("CLAMAV_PORT", "3310")
         data["google_client_id"] = (env.get("GOOGLE_CLIENT_ID") or "").strip() or None
         data["google_client_secret"] = (env.get("GOOGLE_CLIENT_SECRET") or "").strip() or None
+        data["research_allow_partial"] = env.get("RESEARCH_ALLOW_PARTIAL", "").lower() in (
+            "1",
+            "true",
+            "yes",
+        )
+        data["fallback_llm_provider"] = (env.get("FALLBACK_LLM_PROVIDER") or "").strip()
+        data["fallback_llm_model"] = (env.get("FALLBACK_LLM_MODEL") or "").strip() or None
+        data["fallback_llm_api_key"] = (env.get("FALLBACK_LLM_API_KEY") or "").strip() or None
+        data["fallback_llm_base_url"] = (env.get("FALLBACK_LLM_BASE_URL") or "").strip() or None
+        if env.get("OCR_VISION_MODEL"):
+            data["ocr_vision_model"] = env["OCR_VISION_MODEL"].strip()
         settings = cls.model_validate(data)
         if bool(settings.google_client_id) != bool(settings.google_client_secret):
             raise ValueError("Incomplete Google OAuth configuration")

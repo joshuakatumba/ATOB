@@ -5,6 +5,8 @@ import json
 import re
 import time
 from collections.abc import Awaitable, Callable
+from contextlib import suppress
+from pathlib import Path
 from typing import Annotated, Any
 from uuid import UUID, uuid4
 
@@ -16,6 +18,7 @@ from sqlalchemy.ext.asyncio import AsyncEngine
 
 from civis.chat import HOURLY, LEASE
 from civis.config import Settings
+from civis.learning import record_draft_edit, record_interaction
 from civis.main import Profile, StrictModel
 from civis.providers import ProviderRateLimited, Turn
 from civis.quota import QuotaDenied, mutate
@@ -301,7 +304,9 @@ def install_drafting(
 
     @app.patch("/v1/conversations/{cid}/draft", response_model=DraftSnapshot)
     async def patch_draft(cid: UUID, body: DraftSave, current: Current) -> dict[str, Any]:
-        return await save(cid, body, current.id)
+        saved = await save(cid, body, current.id)
+        await record_draft_edit(engine, cid, current.id, body.values)
+        return saved
 
     @app.post("/v1/drafting/prefill", response_model=PrefillResult)
     async def prefill(body: PrefillRequest, current: Current) -> dict[str, Any]:
@@ -493,8 +498,46 @@ def install_drafting(
                         body.description,
                         {k for k, v in values.items() if v is not None and v.strip()},
                     )
+                    await record_interaction(
+                        engine,
+                        user_id=current.id,
+                        conversation_id=body.conversation_id,
+                        mode="drafting",
+                        prompt=body.description,
+                        response_text=json.dumps(merged_values, ensure_ascii=False),
+                        draft_values=merged_values,
+                        status="complete",
+                        model_name=settings.llm_model,
+                    )
             else:
                 selected.slug = None
+                notice = (
+                    "Tell me what kind of document you'd like to prepare, "
+                    "such as a Lease Agreement, Affidavit, Employment Contract, "
+                    "or Power of Attorney, or pick a template from the catalog."
+                )
+                if body.conversation_id and not settings.fake_model:
+                    with suppress(Exception):
+                        prompt_path = Path(__file__).parent / "prompts" / "drafting-v1.txt"
+                        sys_prompt = prompt_path.read_text()
+                        if existing_slug and existing_values:
+                            sys_prompt += (
+                                f"\n\nActive draft ({existing_slug}) fields:\n"
+                                + json.dumps(existing_values, ensure_ascii=False)
+                            )
+                        freeform_parts: list[str] = []
+
+                        async def _collect_freeform() -> str:
+                            async for ev in provider.stream(
+                                sys_prompt, [Turn(role="user", content=body.description)]
+                            ):
+                                if ev.kind == "text" and ev.text:
+                                    freeform_parts.append(ev.text)
+                            return "".join(freeform_parts).strip()
+
+                        generated = await asyncio.wait_for(_collect_freeform(), timeout=45)
+                        if generated:
+                            notice = generated
                 if body.conversation_id:
                     async with engine.begin() as connection:
                         await owned(connection, body.conversation_id, current.id, True)
@@ -509,13 +552,19 @@ def install_drafting(
                                 "assistant": uuid4(),
                                 "cid": body.conversation_id,
                                 "description": body.description,
-                                "notice": (
-                                    "Tell me what kind of document you'd like to prepare, "
-                                    "such as a Lease Agreement, Affidavit, Employment Contract, "
-                                    "or Power of Attorney, or pick a template from the catalog."
-                                ),
+                                "notice": notice,
                             },
                         )
+                    await record_interaction(
+                        engine,
+                        user_id=current.id,
+                        conversation_id=body.conversation_id,
+                        mode="drafting",
+                        prompt=body.description,
+                        response_text=notice,
+                        status="complete",
+                        model_name=settings.llm_model,
+                    )
             return {
                 "slug": selected.slug,
                 "values": values,

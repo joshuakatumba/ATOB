@@ -519,6 +519,9 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     from civis.uploads import install_uploads
 
     install_uploads(app, engine, redis, settings, profile)
+    from civis.learning import install_learning
+
+    install_learning(app, engine, settings, profile)
 
     @app.get("/v1/safety/contacts")
     async def safety_contacts(current: Current) -> dict[str, object]:

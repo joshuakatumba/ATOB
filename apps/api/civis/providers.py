@@ -6,7 +6,7 @@ import math
 import os
 from collections.abc import AsyncIterator
 from pathlib import Path
-from typing import Literal, Protocol
+from typing import Any, Literal, Protocol
 
 import httpx
 from pydantic import BaseModel, ConfigDict, Field
@@ -324,6 +324,90 @@ class GroqProvider:
                 raise ProviderUnavailable()
 
 
+class FallbackProvider:
+    def __init__(self, primary: ModelProvider, fallback: ModelProvider) -> None:
+        self.primary = primary
+        self.fallback = fallback
+
+    async def stream(self, system: str, messages: list[Turn]) -> AsyncIterator[ModelEvent]:
+        emitted_text = False
+        try:
+            async for event in self.primary.stream(system, messages):
+                if event.kind == "text" and event.text:
+                    emitted_text = True
+                yield event
+            return
+        except ProviderUnavailable:
+            if emitted_text:
+                raise
+        async for event in self.fallback.stream(system, messages):
+            yield event
+
+    async def structured_stream(
+        self, system: str, messages: list[Turn], schema: dict[str, Any], name: str = "response"
+    ) -> AsyncIterator[ModelEvent]:
+        emitted_text = False
+        primary_fn = getattr(self.primary, "structured_stream", None)
+        try:
+            events = (
+                primary_fn(system, messages, schema, name)
+                if callable(primary_fn)
+                else self.primary.stream(system, messages)
+            )
+            async for event in events:
+                if event.kind == "text" and event.text:
+                    emitted_text = True
+                yield event
+            return
+        except ProviderUnavailable:
+            if emitted_text:
+                raise
+        fallback_fn = getattr(self.fallback, "structured_stream", None)
+        events = (
+            fallback_fn(system, messages, schema, name)
+            if callable(fallback_fn)
+            else self.fallback.stream(system, messages)
+        )
+        async for event in events:
+            yield event
+
+
+def _build_fallback_provider(settings: Settings) -> ModelProvider | None:
+    kind = settings.fallback_llm_provider
+    if not kind:
+        if settings.llm_provider == "groq" and settings.anthropic_api_key and settings.fallback_llm_model:
+            kind = "anthropic"
+        else:
+            return None
+    fb_settings = settings.model_copy(
+        update={
+            "llm_provider": kind,
+            "llm_model": settings.fallback_llm_model or settings.llm_model,
+            "groq_api_key": (
+                settings.fallback_llm_api_key if kind == "groq" and settings.fallback_llm_api_key else settings.groq_api_key
+            ),
+            "groq_base_url": (
+                settings.fallback_llm_base_url if kind == "groq" and settings.fallback_llm_base_url else settings.groq_base_url
+            ),
+            "anthropic_api_key": (
+                settings.fallback_llm_api_key
+                if kind == "anthropic" and settings.fallback_llm_api_key
+                else settings.anthropic_api_key
+            ),
+            "anthropic_base_url": (
+                settings.fallback_llm_base_url
+                if kind == "anthropic" and settings.fallback_llm_base_url
+                else settings.anthropic_base_url
+            ),
+        }
+    )
+    if kind == "groq" and fb_settings.groq_api_key and fb_settings.llm_model:
+        return GroqProvider(fb_settings)
+    if kind == "anthropic" and fb_settings.anthropic_api_key and fb_settings.llm_model:
+        return AnthropicProvider(fb_settings)
+    return None
+
+
 def provider_from_settings(settings: Settings) -> ModelProvider | None:
     if settings.fake_model or settings.llm_provider == "fake":
         if settings.environment == "production":
@@ -333,8 +417,12 @@ def provider_from_settings(settings: Settings) -> ModelProvider | None:
                 "Test model requires ENABLE_TEST_FIXTURES=true; configure a real provider"
             )
         return FakeProvider.from_file(delay=float(os.environ.get("FAKE_STREAM_DELAY", "0.01")))
+    primary: ModelProvider | None = None
     if settings.llm_provider == "groq":
-        return GroqProvider(settings)
-    if settings.llm_provider == "anthropic":
-        return AnthropicProvider(settings)
-    return None
+        primary = GroqProvider(settings)
+    elif settings.llm_provider == "anthropic":
+        primary = AnthropicProvider(settings)
+    if primary is None:
+        return None
+    fallback = _build_fallback_provider(settings)
+    return FallbackProvider(primary, fallback) if fallback is not None else primary

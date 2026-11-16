@@ -285,10 +285,17 @@ class ResearchFailure(ProviderUnavailable):
         super().__init__(code)
 
 
+def _norm_quote(value: str) -> str:
+    cleaned = value.replace("\u201c", '"').replace("\u201d", '"').replace("\u2018", "'").replace("\u2019", "'")
+    cleaned = cleaned.replace("\u2014", "-").replace("\u2013", "-")
+    return re.sub(r"\s+", " ", cleaned).strip()
+
+
 class GroundedProvider:
-    def __init__(self, model: ModelProvider, retriever: Retriever):
+    def __init__(self, model: ModelProvider, retriever: Retriever, allow_partial: bool = False):
         self.model = model
         self.retriever = retriever
+        self.allow_partial = allow_partial
         self.stage = "retrieval"
         self.source_count = 0
         self.citations: list[dict[str, str]] = []
@@ -468,7 +475,8 @@ class GroundedProvider:
             if {item.source_id for item in segment.evidence} != set(segment.source_ids):
                 raise ResearchFailure(self.stage, "evidence_mapping")
             if any(
-                not item.quote.strip() or item.quote not in by_id[item.source_id].text
+                not _norm_quote(item.quote)
+                or _norm_quote(item.quote) not in _norm_quote(by_id[item.source_id].text)
                 for item in segment.evidence
             ):
                 raise ResearchFailure(self.stage, "nonliteral_evidence")
@@ -476,7 +484,7 @@ class GroundedProvider:
             if re.search(r"https?://|www\.", segment.text, re.I):
                 raise ResearchFailure(self.stage, "untrusted_link")
             for quote in re.findall(r'["“]([^"”]+)["”]', segment.text):
-                if not any(quote in source.text for source in cited):
+                if not any(_norm_quote(quote) in _norm_quote(source.text) for source in cited):
                     raise ResearchFailure(self.stage, "nonliteral_quote")
         self.stage = "verification"
         verification_prompt = (prompts / "research-verify-v2.txt").read_text()
@@ -519,12 +527,21 @@ class GroundedProvider:
                 Verification,
             )
         )
+        verified_segments = answer.segments
         if sorted(verification.supported) != list(range(len(answer.segments))):
-            raise ResearchFailure(self.stage, "unsupported_claim")
-        # Fail closed: no segment is released until the entire answer passes both checks.
+            if not self.allow_partial:
+                raise ResearchFailure(self.stage, "unsupported_claim")
+            verified_segments = [
+                answer.segments[idx]
+                for idx in sorted(set(verification.supported))
+                if 0 <= idx < len(answer.segments)
+            ]
+            if not verified_segments:
+                raise ResearchFailure(self.stage, "unsupported_claim")
+        # Release only verified segments.
         cited_ids = list(
             dict.fromkeys(
-                identifier for segment in answer.segments for identifier in segment.source_ids
+                identifier for segment in verified_segments for identifier in segment.source_ids
             )
         )
         self.citations = [by_id[identifier].citation() for identifier in cited_ids]
@@ -535,5 +552,5 @@ class GroundedProvider:
             + " ".join(
                 f"[{numbers[identifier]}]" for identifier in dict.fromkeys(segment.source_ids)
             )
-            for segment in answer.segments
+            for segment in verified_segments
         )

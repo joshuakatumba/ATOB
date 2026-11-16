@@ -5,13 +5,17 @@ import base64
 import hashlib
 import json
 import re
+import shutil
 import struct
+import tempfile
 import xml.etree.ElementTree as ET
 import zipfile
 import zlib
 from collections.abc import Awaitable, Callable
+from contextlib import suppress
 from datetime import datetime
 from io import BytesIO
+from pathlib import Path
 from typing import Annotated, Any, cast
 from uuid import UUID, uuid4
 
@@ -270,14 +274,123 @@ def extract_pdf_pages(payload: bytes) -> list[dict[str, Any]]:
     if len(non_empty) <= page_count:
         for idx in range(page_count):
             text_content = non_empty[idx] if idx < len(non_empty) else ""
-            pages.append({"page": idx + 1, "text": text_content[:6000]})
+            pages.append({"page": idx + 1, "text": text_content[:12000]})
     else:
         per_page = max(1, (len(non_empty) + page_count - 1) // page_count)
         for idx in range(page_count):
             group = non_empty[idx * per_page : (idx + 1) * per_page]
             text_content = "\n".join(group)
-            pages.append({"page": idx + 1, "text": text_content[:6000]})
+            pages.append({"page": idx + 1, "text": text_content[:12000]})
     return pages
+
+
+def _detect_image_mime(payload: bytes) -> str | None:
+    if payload.startswith(b"\x89PNG\r\n\x1a\n"):
+        return "image/png"
+    if payload.startswith(b"\xff\xd8\xff"):
+        return "image/jpeg"
+    if payload.startswith(b"RIFF") and payload[8:12] == b"WEBP":
+        return "image/webp"
+    return None
+
+
+async def _ocr_image_bytes(image_bytes: bytes, mime_type: str, settings: Settings) -> str:
+    if EICAR_MARKER in image_bytes:
+        raise HTTPException(422, "malware_detected")
+    tesseract_bin = shutil.which("tesseract")
+    if tesseract_bin:
+        with suppress(Exception):
+            proc = await asyncio.create_subprocess_exec(
+                tesseract_bin,
+                "stdin",
+                "stdout",
+                "--psm",
+                "6",
+                stdin=asyncio.subprocess.PIPE,
+                stdout=asyncio.subprocess.PIPE,
+                stderr=asyncio.subprocess.PIPE,
+            )
+            out, _ = await asyncio.wait_for(proc.communicate(image_bytes), timeout=20)
+            text_out = out.decode("utf-8", errors="ignore").strip()
+            if text_out:
+                return text_out[:12000]
+    if settings.groq_api_key and not settings.fake_model:
+        b64 = base64.b64encode(image_bytes).decode("ascii")
+        data_uri = f"data:{mime_type};base64,{b64}"
+        with suppress(Exception):
+            async with httpx.AsyncClient(timeout=httpx.Timeout(45, connect=10)) as client:
+                resp = await client.post(
+                    settings.groq_base_url.rstrip("/") + "/chat/completions",
+                    headers={"Authorization": "Bearer " + settings.groq_api_key.get_secret_value()},
+                    json={
+                        "model": settings.ocr_vision_model,
+                        "temperature": 0,
+                        "max_tokens": 2048,
+                        "messages": [
+                            {
+                                "role": "user",
+                                "content": [
+                                    {
+                                        "type": "text",
+                                        "text": (
+                                            "Extract all readable text from this legal document image "
+                                            "verbatim. Preserve headings, numbering, and clauses. "
+                                            "Output only the extracted text."
+                                        ),
+                                    },
+                                    {"type": "image_url", "image_url": {"url": data_uri}},
+                                ],
+                            }
+                        ],
+                    },
+                )
+            if resp.status_code == 200:
+                choices = resp.json().get("choices") or []
+                if choices:
+                    content = str(choices[0].get("message", {}).get("content") or "").strip()
+                    if content:
+                        return content[:12000]
+    return ""
+
+
+async def _ocr_scanned_pdf(
+    payload: bytes, settings: Settings, max_pages: int = 8
+) -> list[dict[str, Any]]:
+    pdftoppm_bin = shutil.which("pdftoppm")
+    if pdftoppm_bin:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            pdf_path = Path(tmpdir) / "doc.pdf"
+            pdf_path.write_bytes(payload)
+            proc = await asyncio.create_subprocess_exec(
+                pdftoppm_bin,
+                "-png",
+                "-r",
+                "150",
+                "-l",
+                str(max_pages),
+                str(pdf_path),
+                str(Path(tmpdir) / "page"),
+                stdout=asyncio.subprocess.PIPE,
+                stderr=asyncio.subprocess.PIPE,
+            )
+            await asyncio.wait_for(proc.communicate(), timeout=30)
+            rendered = sorted(Path(tmpdir).glob("page-*.png"))
+            if rendered:
+                pages: list[dict[str, Any]] = []
+                for idx, img_path in enumerate(rendered[:max_pages], start=1):
+                    ocr_txt = await _ocr_image_bytes(
+                        img_path.read_bytes(), "image/png", settings
+                    )
+                    pages.append({"page": idx, "text": ocr_txt})
+                return pages
+    jpeg_streams = re.findall(rb"\xff\xd8\xff.*?\xff\xd9", payload, re.DOTALL)
+    if jpeg_streams:
+        pages = []
+        for idx, jpg in enumerate(jpeg_streams[:max_pages], start=1):
+            ocr_txt = await _ocr_image_bytes(jpg, "image/jpeg", settings)
+            pages.append({"page": idx, "text": ocr_txt})
+        return pages
+    return []
 
 
 def _s3_client(settings: Settings) -> Any:
@@ -489,7 +602,12 @@ def install_uploads(
         is_text = lower_name.endswith((".txt", ".md", ".csv")) or body.content_type.startswith(
             ("text/plain", "text/markdown", "text/csv")
         )
-        if not (is_pdf or is_docx or is_text):
+        detected_img_mime = _detect_image_mime(payload)
+        is_image = detected_img_mime is not None and (
+            lower_name.endswith((".png", ".jpg", ".jpeg", ".webp"))
+            or body.content_type in ("image/png", "image/jpeg", "image/webp")
+        )
+        if not (is_pdf or is_docx or is_text or is_image):
             raise HTTPException(422, "validation_failed")
 
         daily_count = int(
@@ -523,8 +641,15 @@ def install_uploads(
 
         if is_pdf:
             pages = extract_pdf_pages(payload)
+            if sum(len(str(p.get("text") or "").strip()) for p in pages) < 40:
+                ocr_pages = await _ocr_scanned_pdf(payload, settings)
+                if ocr_pages and any(str(p.get("text") or "").strip() for p in ocr_pages):
+                    pages = ocr_pages
         elif is_docx:
             pages = extract_docx_pages(payload)
+        elif is_image and detected_img_mime:
+            ocr_text = await _ocr_image_bytes(payload, detected_img_mime, settings)
+            pages = [{"page": 1, "text": ocr_text}]
         else:
             pages = extract_text_pages(payload)
         page_count = len(pages)
@@ -542,7 +667,7 @@ def install_uploads(
             else (
                 "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                 if is_docx
-                else "text/plain"
+                else (detected_img_mime if is_image and detected_img_mime else "text/plain")
             )
         )
         await asyncio.to_thread(

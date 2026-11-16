@@ -178,7 +178,7 @@ const Msg = ({ m, hideMark, openDoc, chat, onFeedback, onCopy, onOpenSupport, su
 
   const handleCopy = () => {
     if (!m.t) return;
-    onCopy?.(m.t);
+    onCopy?.(m.t, m.id);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };

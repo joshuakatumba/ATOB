@@ -87,7 +87,7 @@ function Composer({ tplView, mic, taRef, input, setInput, send, mode, showSub, b
                     ref={fileRef}
                     type="file"
                     multiple
-                    accept=".pdf,.docx,.txt,.md,.csv,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/plain,text/markdown,text/csv"
+                    accept=".pdf,.docx,.txt,.md,.csv,.png,.jpg,.jpeg,.webp,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/plain,text/markdown,text/csv,image/png,image/jpeg,image/webp"
                     hidden
                     onChange={(e) => {
                       const files = e.target.files;

@@ -481,11 +481,19 @@ function Shell({ user, dark, setDark, onLogout }) {
     }
     say(success ? okMsg : errMsg);
   };
-  const onCopy = (txt) => copyText(txt, "Copied to clipboard", "Could not copy text");
+  const sendSignal = (messageId, signal) => {
+    if (!messageId) return;
+    http(`/v1/messages/${messageId}/signal`, { body: { signal }, retry: false }).catch(() => {});
+  };
+  const onCopy = (txt, messageId) => {
+    copyText(txt, "Copied to clipboard", "Could not copy text");
+    if (messageId) sendSignal(messageId, "copied");
+  };
   const onOpenSupport = (msg, focusIdx = null) => {
     setSupportState((prev) => {
       const sameMsg = prev && ((prev.msg?.id && prev.msg.id === msg.id) || prev.msg === msg);
       if (sameMsg && focusIdx === null) return null;
+      if (msg?.id) sendSignal(msg.id, "supporting_opened");
       return { msg, focusIndex: focusIdx };
     });
   };
